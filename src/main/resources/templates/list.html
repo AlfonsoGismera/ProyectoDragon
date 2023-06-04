@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Blog Usuarios</title>
+    <!-- Bootstrap core CSS -->
+    <th:block th:replace="fragmentos::bootstrap"></th:block>
+    <!--Pruebas DMCard -->
+    <link th:href="@{/css/DMCard.css}" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Pruebas-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+<!--Site Nav-->
+<nav th:replace="Frag-Pruebas::nav"></nav>
+<!--Site Main-->
+<main>
+
+    <div class="position-relative overflow-hidden p-1 p-md-3 m-md-1 text-center">
+        <div class="container">
+            <h1 class="display-6 fw-normal">Listado de usuarios del blog</h1>
+            <form method="post" action="#" th:action="@{/usuario/list/filter}">
+                <label for="nombre" class="form-label">Filtrar por nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre"
+                       onkeydown="preventSubmit(event)"        onkeyup="filter_by_name()"/>
+                <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+            </form>
+            <button href="#" class="btn btn-primary" onclick="exportToExcelUsuarios()">Exportar a Excel</button>
+            <table th:replace="fragmentos::lista-usuarios"></table>
+        </div>
+    </div>
+
+
+</main>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<!--<th:block th:replace="fragmentos::jsfinal(~{::script})">
+
+</th:block>-->
+
+
+</body>
+</html>
+

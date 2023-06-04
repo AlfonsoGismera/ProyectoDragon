@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--suppress HtmlDeprecatedAttribute -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>DM Index</title>
+    <!-- Bootstrap core CSS -->
+    <th:block th:replace="fragmentos::bootstrap"></th:block>
+    <!--Pruebas DMCard -->
+    <link th:href="@{/css/DMCard.css}" rel="stylesheet">
+    <link th:href="@{/css/carrito.css}" rel="stylesheet">
+    <!--Pruebas Carrusel-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Pruebas-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+<!--Site Nav-->
+<nav th:replace="Frag-Pruebas::nav"></nav>
+<!--Site Main-->
+<main>
+    <!--Carrusel-->
+    <div th:replace="Frag-Pruebas::Carrusel"></div>
+    <!--Juegos 11  Imagenes con texto -->
+    <h1><i class="fa-solid fa-dragon fa-lg"></i> Juegos <i class="fa-solid fa-dragon fa-lg fa-flip-horizontal"></i></h1>
+    <section th:replace="Frag-Pruebas::Carrito"></section>
+    <hr>
+    <!--Cartas-->
+    <div class="container mx-auto" th:replace="Frag-Pruebas::Cartas"></div>
+    <!--Pruebas-->
+    <hr>
+    <form class="mb-2 mt-2 ml-2" id="emailForm">
+        <label for="destinatario">Destinatario:</label>
+        <input type="email" id="destinatario" name="Destinatario" required>
+
+        <label for="asunto">Asunto:</label>
+        <input type="text" id="asunto" name="Asunto" required>
+
+        <label for="mensaje" class="hidden">Mensaje:</label>
+        <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>
+
+        <!-- Campo oculto para el mensaje de agradecimiento -->
+        <input type="hidden" id="agradecimiento" name="agradecimiento" value="Gracias por tu mensaje.">
+
+        <button type="submit">Enviar correo</button>
+    </form>
+    <!-- Noticias -->
+    <h1><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
+    <hr>
+    <div class="row mb-2 container mx-auto">
+        <div class="col-md-6 zoom">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Lore</strong>
+                    <h3 class="mb-0">El Emperador</h3>
+                    <div class="mb-1 text-muted">Año 30.000</div>
+                    <p class="card-text mb-auto">El emperador de la humanidad proclamo la Gran cruzada en busca de los
+                        primarcas
+                        y unificar a la humanidad.</p>
+                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+
+                    <img class="img-fluid img-thumbnail " src="" th:src="@{../img/Emperador.jpg}" width="195"
+                         height="200" alt=""/>
+
+                    <!--            <img src="" th:src="@{'https://www.games-workshop.com/resources/catalog/product/600x620/99120101353_HonouredoftheChapterLead.jpg'}" width="200" height="250" />-->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 zoom">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success">Guardia imperial</strong>
+                    <h3 class="mb-0">La Guardia te necesita</h3>
+                    <div class="mb-1 text-muted">Año 40.000</div>
+                    <p class="mb-auto">La guardia imperial es un martillo del emperador, es la primera contra el hereje
+                        y el xeno.</p>
+                    <b>!Unete a la Guardia Imperial!</b>
+                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="img-fluid img-thumbnail" src="" th:src="@{../img/Imperial-Guard.jpg}" width="180"
+                         height="200" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!-- Hasta aqui     -->
+        <div class="col-md-6 mt-2 zoom">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Lore</strong>
+                    <h3 class="mb-0">Los tyranidos</h3>
+                    <div class="mb-1 text-muted">Año ?????</div>
+                    <p class="card-text mb-auto">Son la misma muerte de la galaxia una gran colmena de seres sedientos
+                        de biomasa que usaran para aumentar sus números</p>
+                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="img-fluid img-thumbnail" src="" th:src="@{../img/tyra.jpg}" width="170" height="200"
+                         alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 zoom">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-start">Orkos</strong>
+                    <h3 class="mb-0">El GRANN WAAAGGGGH</h3>
+                    <div class="mb-1 text-muted">Año 40.000</div>
+                    <p class="mb-auto">Los chicoz más duroz te ezperan en las mejores batallas, coje tu garrapato y
+                        unete a la lucha</p>
+                    <b>! WAAAGGGGH!</b>
+                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="img-fluid img-thumbnail" src="" th:src="@{../img/Ghazg.jpg}" width="180" height="200"
+                         alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    Redes sociales -->
+    <div class="redes-sociales">
+    <h1>Redes sociales</h1>
+
+
+
+    <div style="display: flex; justify-content: center;">
+        <div style="margin: 10px;">
+            <!-- Bloque de Twitter -->
+            <a class="twitter-timeline" data-height="600" data-width="350" data-dnt="true" data-theme="dark"
+               href="https://twitter.com/warjack1999?ref_src=twsrc%5Etfw">Tweets by warjack1999</a>
+        </div>
+        <div style="margin: 10px;">
+            <!--  Bloque de Instagram -->
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <blockquote class="instagram-media" data-instgrm-captioned
+                        data-instgrm-permalink="https://www.instagram.com/p/CGNK_0uhRy6/?utm_source=ig_embed&amp;utm_campaign=loading"
+                        data-instgrm-version="14"
+                        style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; width:500px; height:600px; max-width:100px; min-width:100px; padding:0;  width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                <div style="padding:16px;"><a
+                        href="https://www.instagram.com/p/CGNK_0uhRy6/?utm_source=ig_embed&amp;utm_campaign=loading"
+                        style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;"
+                        target="_blank">
+                    <div style=" display: flex; flex-direction: row; align-items: center;">
+                        <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                        </div>
+                    </div>
+                    <div style="padding: 19% 0;"></div>
+                    <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                        <svg width="50px" height="50px" viewBox="0 0 60 60">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                    <g>
+                                        <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div style="padding-top: 8px;">
+                        <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                            Ver esta publicación en Instagram
+                        </div>
+                    </div>
+                    <div style="padding: 12.5% 0;"></div>
+                    <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                        <div>
+                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 13px; width: 13px; transform: translateX(0px) translateY(7px);"></div>
+                            <div style="background-color: #F4F4F4; height: 13px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 13px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+                            <div style="background-color: #F4F4F4; border-radius: 50%; height: 13px; width: 13px; transform: translateX(9px) translateY(-18px);"></div>
+                        </div>
+                        <div style="margin-left: 8px;">
+                            <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+                            <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <div style=" width: 0; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+                            <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+                            <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                        <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+                        <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
+                    </div>
+                </a>
+                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
+                        <a href="https://www.instagram.com/p/CGNK_0uhRy6/?utm_source=ig_embed&amp;utm_campaign=loading"
+                           style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
+                           target="_blank">Una publicación compartida de Alf (@warjack_42)</a></p></div>
+            </blockquote>
+        </div>
+        <div style="margin: 10px;">
+            <!-- Bloque de Facebook -->
+            <script async src="//www.instagram.com/embed.js"></script>
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fleondrummer%2Fposts%2Fpfbid023Zo8Z1xfeHuDRKYRwMj8nbDF5t4BxnjTb6phh3MgMnb9vCBa7wVbbzqP1Sci1rBQl&show_text=true&width=350"
+                    width="500" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                    allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </div>
+
+
+
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0IQoa18olmN1Yk8HT9x9BF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+</main>
+
+<!-- Site footer -->
+<footer th:replace="fragmentos::footer"></footer>
+<!--Musiaca-->
+<!--<script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>-->
+
+<!--Pruebas 2-->
+<script>
+    function filtrarItems() {
+        // Obtener el campo de entrada de búsqueda
+        const searchInput = document.getElementById('searchInput');
+
+        // Obtener la sección del carrito
+        const carritoSection = document.getElementById('carritoSection');
+
+        // Agregar un evento de escucha al campo de entrada de búsqueda
+        searchInput.addEventListener('input', function () {
+            // Obtener el valor de búsqueda ingresado por el usuario
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Obtener todos los elementos de título en la página
+            const items = document.getElementsByClassName('titulo-item');
+
+            // Verificar si hay un término de búsqueda
+            if (searchTerm.length > 0) {
+                // Mostrar la sección del carrito
+                carritoSection.style.display = '';
+            } else {
+                // Ocultar la sección del carrito
+                carritoSection.style.display = 'none';
+            }
+
+            // Recorrer los elementos y mostrar u ocultar según el término de búsqueda
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const title = item.textContent.toLowerCase();
+
+                // Verificar si el título contiene el término de búsqueda
+                if (title.includes(searchTerm)) {
+                    item.parentNode.style.display = ''; // Mostrar el elemento
+                } else {
+                    item.parentNode.style.display = 'none'; // Ocultar el elemento
+                }
+            }
+        });
+    }
+
+    // Llamar a la función cuando se cargue la página
+    window.addEventListener('DOMContentLoaded', filtrarItems);
+</script>
+<!--Pruebas email-->
+<script>
+    document.getElementById("carrito").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let form = event.target;
+        let destinatario = form.destinatario.value;
+        // let asunto = form.asunto.value;
+        let mensaje = form.mensaje.value;
+        let agradecimiento = form.agradecimiento.value;
+
+        let formData = new FormData();
+        formData.append("destinatario", destinatario);
+        // formData.append("asunto", asunto);
+        formData.append("mensaje", agradecimiento); // Usar el mensaje de agradecimiento en lugar del mensaje del campo de texto
+
+        let url = "https://formsubmit.co/ajax/" + destinatario;
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    alert("Correo enviado exitosamente");
+                    form.reset();
+                } else {
+                    alert("Error al enviar el correo");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("Error al enviar el correo");
+            });
+    });
+</script>
+<script th:src="@{/js/carrusel.js}" async></script>
+<script th:src="@{/js/carrito.js}" async></script>
+<script th:src="@{/js/app.js}" async></script>
+<script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+        server: '1105057341281423400', // El Dragón de La Mesa
+        channel: '1105057342074138668' // #「📣」rules
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+<!--Sin esto no funciona el carrito-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" async></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}" async></script>
+<!--<th:block th:replace="fragmentos::jsfinal(~{::script})">-->
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--</th:block>-->
+</body>
+</html>

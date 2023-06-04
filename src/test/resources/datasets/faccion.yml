@@ -1,0 +1,10 @@
+faccion:
+  - id: 1
+    nombre: "IMPERIO"
+  - ID: 2
+    nombre: "ORKOS"
+  - ID: 3
+    nombre: "TIRANYDOS"
+  - ID: 4
+    nombre: "CAOS"
+

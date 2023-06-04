@@ -1,0 +1,51 @@
+.b-example-divider {
+    height: 3rem;
+    background-color: #592727;
+    border: solid rgba(153, 227, 85, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgb(89, 39, 39), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+#Cabezera {
+    background-color: #191919;
+}
+
+.zoom {
+    transition: transform 0.7s;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+}
+
+
+#portada {
+    background-image: url("https://imagenes.elpais.com/resizer/ZlKVXZ6WvOQFWJarCuULztH_jiQ=/1960x1103/filters:focal(392x280:402x290)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/3JHHGWRWPI7FUHIZDXMKFIGG5A.jpg");
+    background-repeat: no-repeat;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: var(--bs-dark);
+    border-color: var(--bs-gray);
+}
+
+.form-control-dark:focus {
+    color: #fff;
+    background-color: var(--bs-dark);
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.text-small {
+    font-size: 85%;
+}
+
+.dropdown-toggle {
+    outline: 0;
+}

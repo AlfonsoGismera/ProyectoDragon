@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Formulario blog</title>
+
+    <!-- Bootstrap core CSS -->
+    <th:block th:replace="fragmentos::bootstrap"></th:block>
+
+</head>
+<body>
+<!--Site header-->
+<header id="Cabezera" class="p-3  text-white">
+
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"/>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li>
+                    <a class="nav-link px-2 text-white" href="#" th:href="@{/}"><i class="fa fa-home"></i> <span
+                            th:text="#{header.Inicio}">Inicio</span></a>
+                </li>
+                <li>
+                    <a sec:authorize="isAuthenticated()" class="nav-link px-2 text-white" href="#"
+                       th:href="@{/usuario/list}"> <i class="fas fa-user"> </i><span th:text="#{header.Usuarios}">Usuarios</span></a>
+                </li>
+                <li>
+                    <a class="nav-link px-2 text-white" href="#" th:href="@{/humanidad}"><i class="fas fa-globe"></i>
+                        <span th:text="#{header.Humanidad}">Humanidad</span></a>
+                </li>
+                <li>
+
+                    <a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
+                       th:href="@{/usuario/new}" class="nav-link px-2 text-secondary">
+                        <i class="fas fa-plus-circle"></i> <span th:text="#{header.meter}"> Añadir usuario</span></a>
+                </li>
+            </ul>
+            <!--Cambiar-->
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <!--        <input type="search" class="form-control form-control-dark" th:placeholder="#{headar.buscar}" aria-label="Search">-->
+            </form>
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://m.media-amazon.com/images/I/41eZVpAFGyL._AC_SY580_.jpg" alt="mdo" width="32"
+                         height="32" class="rounded-circle">
+                    <!--          <img class="img-fluid img-thumbnail" src="" th:src="@{../img/Imperial-Guard.jpg}" width="180" height="170" alt=""/>-->
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#" th:text="#{header.nProyecto}">Nuevo proyecto</a></li>
+                    <li><a class="dropdown-item" href="#" th:text="#{header.opciones}">Opciones</a></li>
+                    <li><a class="dropdown-item" href="#" th:text="#{header.Perfil}">Perfil</a></li>
+                    <li><a class="dropdown-item" th:text="#{header.esp}" th:href="@{''(lang=es_ES)}">Español</a></li>
+                    <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=en_US)}">Inglés</a></li>
+                    <li>
+             <span class="dropdown-item"
+                   th:each="cookie : ${#request.cookies}"
+                   th:if="${cookie.getName() == #authentication.getName()}"
+                   th:text="${'N.Visitas:' + cookie.getValue()}">
+              </span>
+
+                    </li>
+                    <li>
+                        <span class="dropdown-item"
+                              th:text="#{header.numUsuarios} + ': ' + ${session.num_Usuarios}"></span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class="fas fa-sign-out-alt"></i> Salir</a>
+                    </li>
+                    <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container py-5">
+    <div class="row g-5">
+        <div class=" col-md-7 col-lg-8">
+            <form method="post" action="#" enctype="multipart/form-data"
+                  th:action="${UsuariosForm.id != 0} ? @{/usuario/edit/submit} : @{/usuario/new/submit}"
+                  th:object="${UsuariosForm}">
+                <h4 class="mb-3" th:text="${UsuariosForm.id != 0} ? 'Editar usuario' : 'Nuevo usuario'">Nuevo
+                    usuario</h4>
+                <div class="row g-3">
+                    <div>
+                        <input type="hidden" id="id" name="id" th:field="*{id}">
+                    </div>
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('nombre')} ? 'has-error'">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{nombre}"/>
+                        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+                              class="help-block" id="nombre-error"></span>
+                    </div>
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('username')} ? 'has-error'">
+                        <label for="nombre" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="username" placeholder="Usuario" th:field="*{username}"/>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                              class="help-block" id="username-error"></span>
+                    </div>
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" id="password" placeholder="Contraseña" th:field="*{password}" />
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block" id="password-error"></span>
+                    </div>
+
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email"
+                               placeholder="usuario@warhammer40.net" th:field="*{email}"/>
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                              class="help-block" id="email-error"></span>
+                    </div>
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('telefono')} ? 'has-error'">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="954000000"
+                               th:field="*{telefono}"/>
+                        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"
+                              class="help-block" id="telefono-error"></span>
+                    </div>
+
+
+                    <div class="col-sm-6 form-check form-switch">
+                        <input type="checkbox" class="form-check-input" id="directivo" th:field="*{directivo}" checked="false">
+                        <label class="form-check-label" for="directivo">¿Es administrador?</label>
+                    </div>
+
+                    <div class="col-sm-6" th:classappend="${#fields.hasErrors('role')} ? 'has-error'">
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-control" id="role" th:field="*{role}">
+                            <option value="ROLE_ADMIN">Admin</option>
+                            <option value="ROLE_USER">User</option>
+                        </select>
+                    </div>
+
+
+
+                    <div th:each="tipo : ${listaFaccion}">
+                        <div class="col-sm-6 form-check form-check-inline">
+                            <input type="radio" class="form-check-input" th:field="*{faccion}" th:value="${tipo.id}">
+                            <label class="form-check-label" th:for="${#ids.prev('faccion')}"
+                                   th:text="${tipo.nombre}">tipo faccion</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="file">Avatar</label>
+                        <input type="file" id="file" name="file" class="form-control">
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary mt-1">Enviar</button>
+            </form>
+        </div>
+    </div>
+</main>
+<!-- Site footer -->
+<footer th:replace="fragmentos::footer"></footer>
+<th:block th:replace="fragmentos::jsfinal(~{::script})">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+</th:block>
+</body>
+</html>
+

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Juegos tienda</title>
+    <!-- Bootstrap core CSS -->
+    <th:block th:replace="fragmentos::bootstrap"></th:block>
+    <!--Pruebas DMCard -->
+    <link th:href="@{/css/DMCard.css}" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Pruebas-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
+</head>
+<body>
+
+<!--Site header-->
+<!--Site Nav-->
+<nav th:replace="Frag-Pruebas::nav"></nav>
+<!--Site Main-->
+<main>
+    <div class="position-relative overflow-hidden mx-auto p-3 p-md-5 m-md-3 text-center">
+        <div class="col-md-7 p-lg-7 mx-auto my-7">
+            <h1 class="display-6 fw-normal">Listado de Juegos de la página</h1>
+            <label for="genreFilter">Filtrar por género:</label>
+            <select id="genreFilter" onchange="filterByGenre()">
+                <option value="">Todos</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="WarGame">War Game</option>
+                <option value="Rol">Rol</option>
+            </select>
+
+            <form method="post" action="#" th:action="@{/juego/listJuego/filter}">
+                <label for="searchInput" class="form-label">Filtrar por nombre</label>
+                <input class="form-control" type="text" id="searchInput2" placeholder="Buscar por nombre" onkeydown="preventSubmit(event)" onkeyup="filterByName3()" />
+                <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+            </form>
+
+                <button class="btn mt-2 mb-2 btn-danger" id="btn-guardar-imagen">Exportar a imagen</button>
+                <button href="#" class="btn mt-2 mb-2 btn-success" onclick="exportToExcelJuegos()">Exportar a Excel</button>
+
+
+
+                <table th:replace="fragmentos::lista-juegos"></table>
+
+        </div>
+    </div>
+
+
+</main>
+<!-- Site footer -->
+<footer th:replace="fragmentos::footer"></footer>
+<!--Prueba imagen-->
+<!--Scrips-->
+
+<script>
+    // Escucha el evento click del botón para capturar y guardar la tabla
+    document.getElementById("btn-guardar-imagen").addEventListener("click", function() {
+        // Captura el elemento que contiene la tabla
+        const tabla = document.getElementById("lista-juegos");
+
+        // Convierte la tabla a una imagen utilizando HTML2Canvas
+        html2canvas(tabla)
+            .then(function(canvas) {
+                // Crea un enlace temporal para descargar la imagen
+                const link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "tabla.png";
+
+                // Simula un clic en el enlace para iniciar la descarga
+                link.click();
+            });
+    });
+</script>
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+
+<!--<th:block th:replace="fragmentos::jsfinal(~{::script})">-->
+
+<!--</th:block>-->
+
+
+</body>
+</html>

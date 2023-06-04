@@ -1,0 +1,20 @@
+$font-montserrat: "Montserrat", sans-serif;
+$font-playfair-display: "Playfair Display", serif;
+$font-open-sans: "Open Sans", sans-serif;
+nav,a,title {
+  font-family: $font-montserrat;
+
+  // Estilos adicionales para el elemento nav
+}
+
+h1, h2, h3, h5, h6, th, .titulo-item, .precio-item {
+  font-family: $font-playfair-display;
+  color: red;
+  // Estilos adicionales para los encabezados
+}
+
+body, h4, p, .boton-item, td, .btn-pagar {
+  font-family: $font-open-sans;
+  color: blue;
+  // Estilos adicionales para el resto del texto
+}

@@ -1,0 +1,11 @@
+
+proyecto:
+  - id: 1
+    nombre: "Agenda2030"
+    descripcion: "Traduccion de la novela de la Herejia de Horus"
+  - id: 2
+    nombre: "Marzo"
+    descripcion: "Traduccion de la novela Sol oscuro"
+  - id: 3
+    nombre: "Diciembre"
+    descripcion: "Entrada sobre el nuevo Codex"

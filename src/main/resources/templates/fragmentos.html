@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Fragmentos</title>
+    <th:block th:fragment="bootstrap">
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <!--Bootstrap Foooter  -->
+        <link th:href="@{/css/footers.css}" rel="stylesheet">
+        <!--Bootstrap Header  -->
+        <link th:href="@{/css/headers.css}" rel="stylesheet">
+        <link th:href="@{/css/Scss/DmTienda.css}" rel="stylesheet">
+
+        <!--Bootstrap Blog  -->
+<!--        <link th:href="@{/css/blog.css}" rel="stylesheet">-->
+        <!-- Font awesome icons -->
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet">
+    </th:block>
+</head>
+<body>
+<!-- Fragmento . Modal de borrado -->
+<div class="modal fade" id="delete-modal" tabindex="-1" th:fragment="modal-borrar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" th:text="${delete_title}">Borrar contenido</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p th:text="${delete_message}">¿Confirma el borrado de este usuario?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a th:href="@{${delete_url}}" class="btn btn-primary">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Lista de usuarios-->
+<table class="table table-responsive  table-hover" id="lista-usuarios" th:fragment="lista-usuarios">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Usuario</th>
+        <th>Contraseña</th>
+        <th>Rol</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Administrador</th>
+        <th>Facciones</th>
+        <th>Edición</th>
+    </thead>
+    <tbody>
+    <tr th:each="usuario : ${listaUsuarios}">
+        <td th:text="${usuario.id}">ID</td>
+        <td><img src=""
+                 th:src="@{${usuario.imagen} ?: 'https://avatars.dicebear.com/api/human/{email}.png'(email=${usuario.email})}"
+                 width="64px" height="64px" alt=""/></td>
+        <td th:text="${usuario.nombre}">Pepe Pérez</td>
+        <td th:text="${usuario.username}">Prueba</td>
+        <td th:text="${usuario.password}">1234</td>
+        <td th:text="${usuario.role}">ROLE_USER</td>
+        <td th:text="${usuario.email}">pepe.perez@openwebinars.net</td>
+        <td th:text="${usuario.telefono}">954000000</td>
+        <td>
+            <span th:if="${usuario.directivo}" class="fa fa-user-check" aria-hidden="true"></span>
+            <span th:unless="${usuario.directivo}" class="fa fa-user" aria-hidden="true"></span>
+        </td>
+        <td th:text="${usuario.faccion.nombre}">tipo faccion</td>
+        <!--    </div>-->
+        <td><a th:href="@{/usuario/edit/{id}(id=${usuario.id})}" aria-label="Editar">
+            <span class="fas fa-user-cog" aria-hidden="true"></span></a></td>
+
+        <td><a href="#" data-bs-toggle="modal" th:data-bs-target="'#delete-modal_' + ${usuario.id}" aria-label="Borrar">
+            <span class="fas fa-user-slash" aria-hidden="true"></span></a></td>
+
+        <div class="modal fade" th:id="'delete-modal_' + ${usuario.id}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Borrar Usuarios</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Confirma el borrado de este usuario?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <!--/*@thymesVar id="id" type=""*/-->
+                        <a th:href="@{/usuario/delete/{id}(id=${usuario.id})}" class="btn btn-primary">Aceptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tr>
+    </tbody>
+</table>
+<!--Lista de Juegos-->
+<table class="table table-responsive table-hover mx-auto" id="lista-juegos" th:fragment="lista-juegos">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Disponible</th>
+        <th>Generos</th>
+        <th>Edición</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody">
+    <tr th:each="juego : ${listaJuegos}">
+        <td class="item" th:text="${juego.id}">ID</td>
+        <td class="item"><img
+                              th:src="@{${juego.imagen} ?: 'https://avatars.dicebear.com/api/human/{email}.png'}"
+                              width="64px" height="64px"   src="#" alt="avatar"/></td>
+        <td class="item" style="color: #00aced" th:text="${juego.nombre}">Pongo</td>
+        <td class="item" th:text="${juego.precio}">45</td>
+        <td class="item">
+            <span th:if="${juego.disponible}" class="fas fa-check-circle text-success" aria-hidden="true"></span>
+            <span th:unless="${juego.disponible}" class="fas fa-times-circle text-danger" aria-hidden="true"></span>
+        </td>
+        <td class="item" th:text="${juego.genero.nombre}">tipo genero</td>
+        <td class="item"><a th:href="@{/juego/edit/{id}(id=${juego.id})}" aria-label="Editar">
+            <span class="fas fa-user-cog" aria-hidden="true"></span></a></td>
+
+        <td><a href="#" data-bs-toggle="modal" th:data-bs-target="'#delete-modal_' + ${juego.id}" aria-label="Borrar">
+            <span class="fas fa-user-slash" aria-hidden="true"></span></a></td>
+        <div class="modal fade" th:id="'delete-modal_' + ${juego.id}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Borrar Usuarios</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Confirma el borrado de este juego?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <!--/*@thymesVar id="id" type=""*/-->
+                        <a th:href="@{/juego/delete/{id}(id=${juego.id})}" class="btn btn-primary">Aceptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </tr>
+    </tbody>
+</table>
+<!--Carrito invisible-->
+<section th:fragment="CarritoInvi" class="contenedor" id="carritoSection" style="display: none;">
+    <!-- Contenedor de elementos -->
+    <div class="contenedor-items">
+        <div class="item">
+            <span class="titulo-item">7 de Mar Cabernod</span>
+            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt="" width="158" height="200"
+                 class="img-item">
+            <span class="precio-item">$15</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">7 de Mar Corsarios </span>
+            <img src="https://www.nosolorol.com/913-large_default/7-mar-pantalla-del-dj-papel.jpg" alt="" width="158"
+                 height="200" class="img-item">
+            <span class="precio-item">$25</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">2024</span>
+            <img src="https://www.nosolorol.com/3349-large_default/2084-rebajas-roleras-de-primavera.jpg" width="158"
+                 height="200" alt="" class="img-item">
+            <span class="precio-item">$35</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">La Night</span>
+            <img src="https://www.nosolorol.com/2560-large_default/mutant-mechatron.jpg" alt="" width="158" height="200"
+                 class="img-item">
+            <span class="precio-item">$18</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Silver All</span>
+            <img src="https://www.nosolorol.com/2474-large_default/blacksad-guia-de-inicio-pdf.jpg" alt="" width="158"
+                 height="200" class="img-item">
+            <span class="precio-item">$32</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Skin Glam</span>
+            <img src="https://www.nosolorol.com/740-large_default/manual-de-zona-1-la-guarida-de-los-saurios-papel.jpg"
+                 alt="" width="158" height="200" class="img-item">
+            <span class="precio-item">$18</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Midimix</span>
+            <img src="https://www.nosolorol.com/2160-large_default/dentro-del-laberinto-el-juego-de-aventuras.jpg"
+                 alt="" width="158" height="200" class="img-item">
+            <span class="precio-item">$54</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Sir Blue</span>
+            <img src="https://www.nosolorol.com/2434-large_default/dune-aventuras-en-el-imperio-papel.jpg" alt=""
+                 width="158" height="200" class="img-item">
+            <span class="precio-item">$32</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+    </div>
+    <!-- Carrito de Compras -->
+    <form target="_blank" action="https://formsubmit.co/warjack1999@gmail.com" method="POST" class="carrito" id="carrito">
+        <div class="header-carrito">
+            <h2>Tu Carrito</h2>
+        </div>
+
+        <div class="carrito-items">
+
+        </div>
+        <div class="carrito-total">
+            <div class="fila">
+                <strong>Tu Total</strong>
+                <span class="carrito-precio-total">
+                        $120.000,00
+                    </span>
+            </div>
+            <label for="destinatario">Destinatario:</label>
+            <input type="email" id="destinatario" name="Destinatario" required>
+            <label for="mensaje" class="hidden">Mensaje:</label>
+            <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>
+
+            <!-- Campo oculto para el mensaje de agradecimiento -->
+            <input type="hidden" id="agradecimiento" name="agradecimiento" value="Gracias por tu compra.">
+            <button type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+        </div>
+
+    </form>
+</section>
+
+<!-- Site footer -->
+<footer class="relative-bottom bottom-0 site-footer d-none d-md-block mx-auto mt-4" th:fragment="footer">
+    <!--Boton para ir arriba-->
+    <button id="scrollButton" onclick="scrollToTop()" class="btn btn-primary">
+        Ir arriba <i class="fas fa-arrow-up fa-lg"></i>
+    </button>
+    <div class="container" >
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h6 th:text="#{footer.sobreNosotros}">Sobre nosotros</h6>
+                <p class="text-justify">DragonEnMesa.com<i> El blog moderno</i> es una evolución de los diarios en línea,
+                    donde la
+                    gente escribía sobre su vida personal, como si fuese un diario íntimo pero dándole difusión en la
+                    red. Las páginas
+                    abiertas Webring incluían a miembros de la comunidad de diarios en línea. Justin Hall, quien
+                    escribió desde 1994 su
+                    blog personal mientras era estudiante de la Universidad de Swarthmore, es reconocido generalmente
+                    como uno de los primeros blogueros. </p>
+            </div>
+
+
+            <div class="col-xs-6 col-md-3">
+                <h6 th:text="#{footer.categoria}">Categorias</h6>
+                <ul class="footer-links">
+                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Imperio_de_la_Humanidad" target="_blank">El
+                        Imperio</a></li>
+                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Imperio_T%27au" target="_blank">Tau</a></li>
+                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Orkos" target="_blank">Orkos</a></li>
+                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Tir%C3%A1nidos" target="_blank">Tyranidos</a>
+                    </li>
+                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Caos" target="_blank">Caos</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6 th:text="#{footer.link}">Links Rapidos</h6>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fab fa-blogger-b"></i> <span th:text="#{footer.sobreNosotros}">Sobre nosotros</span></a>
+                    </li>
+                    <li><a href="#"><i class="fab fa-telegram"></i> <span th:text="#{footer.cNosotros}">Contacta con nosotros</span></a>
+                    </li>
+                    <li><a href="#"><i class="fas fa-hands-helping"></i> <span
+                            th:text="#{footer.contribuye}">Contribuye</span></a></li>
+                    <li><a href="#"><i class="fas fa-user-secret"></i> <span th:text="#{footer.poliPriv}">Politicas de Privacidad</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2023 Alfonso.SA
+                    <a href="#">Dragón de la Mesa</a>.
+
+                </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                    <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Fragmento:Scripts javascript del final -->
+<th:block th:fragment="jsfinal(scripts)">
+    <script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/carrusel.js}"></script>
+
+
+    <th:block th:replace="${scripts}"/>
+</th:block>
+<script th:fragment="CarritoInvsible">
+
+    function filtrarItems() {
+        // Obtener el campo de entrada de búsqueda
+        const searchInput = document.getElementById('searchInput');
+
+        // Obtener la sección del carrito
+        const carritoSection = document.getElementById('carritoSection');
+
+        // Agregar un evento de escucha al campo de entrada de búsqueda
+        searchInput.addEventListener('input', function () {
+            // Obtener el valor de búsqueda ingresado por el usuario
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Obtener todos los elementos de título en la página
+            const items = document.getElementsByClassName('titulo-item');
+
+            // Verificar si hay un término de búsqueda
+            if (searchTerm.length > 0) {
+                // Mostrar la sección del carrito
+                carritoSection.style.display = '';
+            } else {
+                // Ocultar la sección del carrito
+                carritoSection.style.display = 'none';
+            }
+
+            // Recorrer los elementos y mostrar u ocultar según el término de búsqueda
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const title = item.textContent.toLowerCase();
+
+                // Verificar si el título contiene el término de búsqueda
+                if (title.includes(searchTerm)) {
+                    item.parentNode.style.display = ''; // Mostrar el elemento
+                } else {
+                    item.parentNode.style.display = 'none'; // Ocultar el elemento
+                }
+            }
+        });
+    }
+
+    // Llamar a la función cuando se cargue la página
+    window.addEventListener('DOMContentLoaded', filtrarItems);
+</script>
+
+</body>
+</html>

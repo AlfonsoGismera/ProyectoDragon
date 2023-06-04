@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Fragmentos</title>
+    <th:block th:fragment="bootstrap">
+        <!--Pruebas DMCard -->
+        <link th:href="@{/css/DMCard.css}" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <!--    &lt;!&ndash;Bootstrap Foooter  &ndash;&gt;-->
+        <!--    <link th:href="@{/css/footers.css}" rel="stylesheet">-->
+        <!--    &lt;!&ndash;Bootstrap Header  &ndash;&gt;-->
+        <!--    <link th:href="@{/css/headers.css}" rel="stylesheet">-->
+        <!--    &lt;!&ndash;Bootstrap Blog  &ndash;&gt;-->
+        <!--    <link th:href="@{/css/blog.css}" rel="stylesheet">-->
+        <!-- Font awesome icons -->
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet">
+    </th:block>
+</head>
+<body>
+<!--Nav-->
+<nav th:fragment="nav" id="Cabezera" class="navbar navbar-expand-lg  mx-auto ">
+    <!-- Botón para colapsar el menú en dispositivos móviles -->
+    <button class="navbar-toggler btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Elementos del menú -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-lg-5">
+                <a class="nav-link px-2 text-warning" href="#" th:href="@{/Pruebas}"><i class="fa-solid fa-chess-rook fa-xl"></i> <span th:text="#{header.Inicio}" th:classappend="${#httpServletRequest.requestURI == '/Pruebas'} ? 'inactive-link' : ''">Inicio</span></a>
+            </li>
+            <li class="nav-item  mx-lg-5">
+                <!--                    Localizar border border-3 border-warning rounded-circle-->
+                <a sec:authorize="isAuthenticated()"  class="nav-link px-2 text-warning" th:href="@{/juego/listJuego}"  href="#" th:classappend="${#httpServletRequest.requestURI == '/juego/listJuego'} ? 'inactive-link' : ''">
+                    <i class="fa-solid fa-dragon fa-xl"></i>
+                    <span th:text="#{header.CataJue}">Catálogo de juegos</span></a>
+            </li>
+            <div class="navbar-center mx-lg-5">
+                <img src="" class="d-none d-md-block d-lg-block" th:src="@{../img/LogoDM.png}" alt="Logo de la página"
+                     width="60" height="60">
+            </div>
+            <li>
+                <a class="nav-link px-2 text-warning" href="#" th:href="@{/humanidad}" th:classappend="${#httpServletRequest.requestURI == '/humanidad'} ? 'inactive-link' : ''" ><i class="fa-solid fa-scroll fa-xl"></i>
+                    <span th:text="#{header.Noticia}">Noticias</span></a>
+            </li>
+            <li class="nav-item mx-lg-5">
+                <a class="nav-link px-2 text-warning" href="#"><i class="fa-solid fa-heart fa-xl"></i>
+                    <span  th:text="#{header.Novedades}">Novedades</span></a>
+            </li>
+        </ul>
+        <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/humanidad'}">
+        <div class="dropdown text-end d-none d-md-block d-lg-block ">
+            <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+               data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://cdn-icons-png.flaticon.com/512/4230/4230567.png" alt="mdo" width="32"
+                     height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#" th:text="#{header.opciones}">Opciones</a></li>
+                <li><a class="dropdown-item" href="#" th:text="#{header.Perfil}">Perfil</a></li>
+                <li><a class="dropdown-item" th:text="#{header.esp}" th:href="@{''(lang=es_ES)}">Español</a></li>
+                <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=en_US)}">Inglés</a></li>
+                <li><a class="dropdown-item" th:href="@{'/prefs/edit'}" th:text="#{header.prefe}">Editar
+                    preferencias</a></li>
+                <li><a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
+                       th:href="@{/usuario/new}"
+                       th:text="#{header.meter}" class="dropdown-item">Añadir usuario</a></li>
+                <li>
+                <li><a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
+                       th:href="@{/juego/new}"
+                       th:text="#{header.meterJuego}" class="dropdown-item">Añadir Juego</a></li>
+                <li>
+             <span class="dropdown-item"
+                   th:each="cookie : ${#request.cookies}"
+                   th:if="${cookie.getName() == #authentication.getName()}"
+                   th:text="#{header.visitas} + ': ' + ${cookie.getValue()}">
+              </span>
+
+                </li>
+                <li>
+                    <!--/*@thymesVar id="num_Usuarios" type=""*/-->
+                    <span class="dropdown-item" th:text="#{header.numUsuarios} + ': ' + ${session.num_Usuarios}"></span>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" th:text="#{header.salida}" href="javascript:document.getElementById('logoutForm').submit()">
+                    <i class="fas fa-sign-out-alt"></i> Salir</a>
+                </li>
+                <form th:action="@{/logout}" method="post" id="logoutForm"></form>
+            </ul>
+        </div>
+        </th:block>
+    </div>
+    <!--Buscador-Nav-->
+    <!-- Verifica si la página actual es "/Pruebas" o "/juegos/listJuegos" -->
+    <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/humanidad'}">
+<!--        <form class="d-none d-md-block col-8 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="#"
+              th:action="@{/usuario/list/filter}">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" onkeydown="preventSubmit(event)" onkeyup="handleSearch()">
+        </form>-->
+        <div class="d-none d-md-block col-8 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Buscar por título" />
+
+        </div>
+    </th:block>
+
+
+</nav>
+<!--Carrusel-->
+<div th:fragment="Carrusel">
+    <section class="game-section">
+        <h2 class="line-title"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i> Juegos en tendencias </h2>
+        <div class="owl-carousel custom-carousel owl-theme">
+            <div class="item active"
+                 style="background-image: url(https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg);">
+                <div class="item-desc">
+                    <h3>Dota 2</h3>
+                    <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
+                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                </div>
+            </div>
+            <div class="item"
+                 style="background-image: url(https://ucarecdn.com/2a5f69bc-befa-49f4-acc6-ab1dcae514c7/winter3.jpg);">
+                <div class="item-desc">
+                    <h3>The Witcher 3</h3>
+                    <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
+                        of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft
+                        III.</p>
+                </div>
+            </div>
+            <div class="item"
+                 style="background-image: url(https://ucarecdn.com/ec1918b1-2674-452c-bf61-8f73d8cc40c6/rdr2.jpg);">
+                <div class="item-desc">
+                    <h3>RDR 2</h3>
+                    <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
+                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                </div>
+            </div>
+            <div class="item"
+                 style="background-image: url(https://ucarecdn.com/6ba9052d-6105-4491-917b-e1a65b68f920/pubg.jpg);">
+                <div class="item-desc">
+                    <h3>PUBG Mobile</h3>
+                    <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
+                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                </div>
+            </div>
+            <div class="item"
+                 style="background-image: url(https://ucarecdn.com/77598be3-c67f-40de-83d3-71a0f2f76c56/fortnite.jpg);">
+                <div class="item-desc">
+                    <h3>Fortnite</h3>
+                    <p>Battle royale where 100 players fight to be the last person standing. which was a
+                        community-created mod
+                        for Blizzard Entertainment's Warcraft III.</p>
+                </div>
+            </div>
+            <div class="item"
+                 style="background-image: url(https://ucarecdn.com/ed548880-32e4-42af-9d4e-632623903256/farcry5.jpg);">
+                <div class="item-desc">
+                    <h3>Far Cry 5</h3>
+                    <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft.
+                        which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<!--Cartas-->
+<div th:fragment="Cartas">
+    <h1><i class="fa-solid fa-heart fa-lg"></i> Novedades <i class="fa-solid fa-heart fa-lg"></i></h1>
+
+    <div class="boxesContainer mb-2">
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>The Ebony Forest</h3>
+                    <p>Near Havarguard, Winter Territory</p>
+                    <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Forest of Nightmares</h3>
+                    <h4>The Ebony Forest is called such because of the ebony colored trees that call this land home.
+                        It's thick canopy prevents any light from reaching the forest floor, making it the darkest.</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Twilight Lands</h3>
+                    <p>Border Territory</p>
+                    <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Back Side Two</h3>
+                    <h4>In order to reach the Heart of the Land, the Elder Tree, at the center of the Realm, you must
+                        venture through the Twilight Lands. It's given its name due to the area being in a constant
+                        state of twilight, where the sun neither rises nor sets. It's often thought of by humans as a
+                        metaphor for the Wyld being creatures of the In-Between.</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Havarguard</h3>
+                    <p>Winter Territory</p>
+                    <strong><img src="https://i.imgur.com/fKu8xAM.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Back Side Three</h3>
+                    <h4>Havarguard was established by a settlement of nomadic humans who were given permission by the
+                        Mab to claim the land.</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Selaris</h3>
+                    <p>Summer Territory</p>
+                    <strong><img src="https://i.imgur.com/v58rK4d.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>The City of Stars</h3>
+                    <h4>Located at the bottom of the highest peaked mountain in the realm, Selaris was declared as the
+                        Capital of the Summer Court.</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Aeonia</h3>
+                    <p>Spring Territory</p>
+                    <strong><img src="https://i.imgur.com/qZEJDII.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Back Side Four</h3>
+                    <h4>Content in card four</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Elysium</h3>
+                    <p>The City In The Sky</p>
+                    <strong><img src="https://i.imgur.com/S3lXMTI.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>City of the Artherals</h3>
+                    <h4>Content in card four</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>Karvac</h3>
+                    <p>Winter Territory</p>
+                    <strong><img src="https://i.imgur.com/fKu8xAM.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Back Side Four</h3>
+                    <h4>Karvac serves as the primary trading center for the Winter territory. </h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cardBox">
+            <div class="card2">
+                <div class="front">
+                    <h3>The Veiled Shore</h3>
+                    <p>Hover to flip</p>
+                    <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
+                </div>
+                <div class="back">
+                    <h3>Back Side Four</h3>
+                    <h4>Content in card four</h4>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<section th:fragment="Carrito" class="contenedor">
+    <!-- Contenedor de elementos -->
+    <div class="contenedor-items">
+        <div class="item">
+            <span class="titulo-item">7 de Mar Cabernod</span>
+            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt="" width="158" height="200"
+                 class="img-item">
+            <span class="precio-item">$15</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">7 de Mar Corsarios </span>
+            <img src="https://www.nosolorol.com/913-large_default/7-mar-pantalla-del-dj-papel.jpg" alt="" width="158"
+                 height="200" class="img-item">
+            <span class="precio-item">$25</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">2024</span>
+            <img src="https://www.nosolorol.com/3349-large_default/2084-rebajas-roleras-de-primavera.jpg" width="158"
+                 height="200" alt="" class="img-item">
+            <span class="precio-item">$35</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">La Night</span>
+            <img src="https://www.nosolorol.com/2560-large_default/mutant-mechatron.jpg" alt="" width="158" height="200"
+                 class="img-item">
+            <span class="precio-item">$18</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Silver All</span>
+            <img src="https://www.nosolorol.com/2474-large_default/blacksad-guia-de-inicio-pdf.jpg" alt="" width="158"
+                 height="200" class="img-item">
+            <span class="precio-item">$32</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Skin Glam</span>
+            <img src="https://www.nosolorol.com/740-large_default/manual-de-zona-1-la-guarida-de-los-saurios-papel.jpg"
+                 alt="" width="158" height="200" class="img-item">
+            <span class="precio-item">$18</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Midimix</span>
+            <img src="https://www.nosolorol.com/2160-large_default/dentro-del-laberinto-el-juego-de-aventuras.jpg"
+                 alt="" width="158" height="200" class="img-item">
+            <span class="precio-item">$54</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+        <div class="item">
+            <span class="titulo-item">Sir Blue</span>
+            <img src="https://www.nosolorol.com/2434-large_default/dune-aventuras-en-el-imperio-papel.jpg" alt=""
+                 width="158" height="200" class="img-item">
+            <span class="precio-item">$32</span>
+            <button class="boton-item">Agregar al Carrito</button>
+        </div>
+    </div>
+    <!-- Carrito de Compras -->
+    <form target="_blank" action="https://formsubmit.co/warjack1999@gmail.com" method="POST" class="carrito" id="carrito">
+        <div class="header-carrito">
+            <h2>Tu Carrito</h2>
+        </div>
+
+        <div class="carrito-items">
+
+        </div>
+        <div class="carrito-total">
+            <div class="fila">
+                <strong>Tu Total</strong>
+                <span class="carrito-precio-total">
+                        $120.000,00
+                    </span>
+            </div>
+            <label for="destinatario">Destinatario:</label>
+            <input type="email" id="destinatario" name="Destinatario" required>
+            <label for="mensaje" class="hidden">Mensaje:</label>
+            <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>
+
+            <!-- Campo oculto para el mensaje de agradecimiento -->
+            <input type="hidden" id="agradecimiento" name="agradecimiento" value="Gracias por tu compra.">
+            <button type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+        </div>
+
+    </form>
+</section>
+<script th:src="@{/js/DMCard.js}" async ></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}" async></script>
+</body>
+</html>
