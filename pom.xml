@@ -11,10 +11,11 @@
   <groupId>es.Alfonso</groupId>
   <artifactId>blog</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
   <name>blog</name>
   <description>blog</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
     <!-- Webjars -->
     <webjars.bootstrap.version>5.2.2</webjars.bootstrap.version>
     <webjars.fontawesome.version>6.2.0</webjars.fontawesome.version>
