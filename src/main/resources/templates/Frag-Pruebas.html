@@ -67,7 +67,7 @@
                 <li><a class="dropdown-item" href="#" th:text="#{header.opciones}">Opciones</a></li>
                 <li><a class="dropdown-item" href="#" th:text="#{header.Perfil}">Perfil</a></li>
                 <li><a class="dropdown-item" th:text="#{header.esp}" th:href="@{''(lang=es_ES)}">Español</a></li>
-                <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=en_US)}">Inglés</a></li>
+                <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=fr_FR)}">Inglés</a></li>
                 <li><a class="dropdown-item" th:href="@{'/prefs/edit'}" th:text="#{header.prefe}">Editar
                     preferencias</a></li>
                 <li><a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
