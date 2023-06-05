@@ -1,0 +1,27 @@
+
+usuario:
+  - id: 1
+    nombre: "Alfonso Gismera"
+    email: "alfonso.test@quevedo.es"
+    username: "alfonso"
+    password: "alfonso"
+    telefono: "4435456789"
+    directivo: true
+  - id: 2
+    nombre: "María Gutiérrez"
+    email: "maria.test@quevedo.es"
+    username: "pepe"
+    password: "pepe"
+    telefono: "987654321"
+    directivo: false
+
+
+usuario_proyecto:
+  - usuario_id: 1
+    proyecto_id: 3
+  - usuario_id: 1
+    proyecto_id: 2
+  - usuario_id: 2
+    proyecto_id: 1
+  - usuario_id: 2
+    proyecto_id: 3
