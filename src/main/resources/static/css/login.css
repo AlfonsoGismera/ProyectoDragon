@@ -1,9 +1,8 @@
 /* Please ❤ this if you like it! */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
 body {
-    font-family: 'Poppins', sans-serif;
+
     font-weight: 300;
     font-size: 15px;
     line-height: 1.7;
@@ -84,7 +83,6 @@ h6 span {
     border-radius: 50%;
     color: #ffeba7;
     background-color: #102770;
-    font-family: 'unicons';
     content: '\eb4f';
     z-index: 20;
     top: -10px;

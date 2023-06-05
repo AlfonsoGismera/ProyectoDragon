@@ -49,12 +49,10 @@
         <th>Imagen</th>
         <th>Nombre</th>
         <th>Usuario</th>
-        <th>Contraseña</th>
         <th>Rol</th>
         <th>Email</th>
         <th>Teléfono</th>
-        <th>Administrador</th>
-        <th>Facciones</th>
+        <th>Función</th>
         <th>Edición</th>
     </thead>
     <tbody>
@@ -65,14 +63,9 @@
                  width="64px" height="64px" alt=""/></td>
         <td th:text="${usuario.nombre}">Pepe Pérez</td>
         <td th:text="${usuario.username}">Prueba</td>
-        <td th:text="${usuario.password}">1234</td>
         <td th:text="${usuario.role}">ROLE_USER</td>
         <td th:text="${usuario.email}">pepe.perez@openwebinars.net</td>
         <td th:text="${usuario.telefono}">954000000</td>
-        <td>
-            <span th:if="${usuario.directivo}" class="fa fa-user-check" aria-hidden="true"></span>
-            <span th:unless="${usuario.directivo}" class="fa fa-user" aria-hidden="true"></span>
-        </td>
         <td th:text="${usuario.faccion.nombre}">tipo faccion</td>
         <!--    </div>-->
         <td><a th:href="@{/usuario/edit/{id}(id=${usuario.id})}" aria-label="Editar">
@@ -246,22 +239,14 @@
 
 <!-- Site footer -->
 <footer class="relative-bottom bottom-0 site-footer d-none d-md-block mx-auto mt-4" th:fragment="footer">
-    <!--Boton para ir arriba-->
-    <button id="scrollButton" onclick="scrollToTop()" class="btn btn-primary">
-        Ir arriba <i class="fas fa-arrow-up fa-lg"></i>
-    </button>
     <div class="container" >
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h6 th:text="#{footer.sobreNosotros}">Sobre nosotros</h6>
-                <p class="text-justify">DragonEnMesa.com<i> El blog moderno</i> es una evolución de los diarios en línea,
-                    donde la
-                    gente escribía sobre su vida personal, como si fuese un diario íntimo pero dándole difusión en la
-                    red. Las páginas
-                    abiertas Webring incluían a miembros de la comunidad de diarios en línea. Justin Hall, quien
-                    escribió desde 1994 su
-                    blog personal mientras era estudiante de la Universidad de Swarthmore, es reconocido generalmente
-                    como uno de los primeros blogueros. </p>
+                <p class="text-justify">Descubre El Dragón en la Mesa, la tienda online
+                    perfecta para los amantes de los juegos de mesa. Nuestro equipo está comprometido en ofrecerte
+                    los mejores títulos y las últimas novedades del mundo de los juegos de mesa. Explora nuestro catálogo, elige tus favoritos y sumérgete en la diversión de El Dragón en la Mesa.
+                    ¡Únete a nuestra comunidad de discord y vive la experiencia de los juegos de mesa como nunca antes! </p>
             </div>
 
 
@@ -298,7 +283,7 @@
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
                 <p class="copyright-text">Copyright &copy; 2023 Alfonso.SA
-                    <a href="#">Dragón de la Mesa</a>.
+                    <a href="https://app-dragon.herokuapp.com/Pruebas">Dragón de la Mesa</a>.
 
                 </p>
             </div>

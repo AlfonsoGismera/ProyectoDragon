@@ -1,15 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 nav, a, title {
   font-family: "Montserrat", sans-serif;
 }
 
 h1, h2, h3, h5, h6, th, .titulo-item, .precio-item {
   font-family: "Playfair Display", serif;
-  color: red;
 }
 
 body, h4, p, .boton-item, td, .btn-pagar {
   font-family: "Open Sans", sans-serif;
-  color: blue;
 }
 
 /*# sourceMappingURL=DmTienda.css.map */

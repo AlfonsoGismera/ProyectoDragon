@@ -36,7 +36,6 @@ public class Usuario {
     @NotEmpty(message = "{usuario.vacio}")
     @Positive(message = "{usuario.id.mayorquecero}")
     private String telefono;
-    private boolean directivo;
     @ManyToOne
     private Faccion faccion;
 

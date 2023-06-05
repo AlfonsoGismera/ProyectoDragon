@@ -1,31 +1,23 @@
-const noticias = Array.from(document.getElementsByClassName('noticia'));
-const anteriorBtn = document.getElementById('anteriorBtn');
-const siguienteBtn = document.getElementById('siguienteBtn');
+// Obtener el elemento del contador de página
+const contadorPagina = document.getElementById('contadorPagina');
 
-let indiceActual = 0;
-const noticiasPorPagina = 2;
+// Obtener la ruta actual
+const rutaActual = window.location.pathname;
 
-function mostrarNoticias() {
-    noticias.forEach((noticia, index) => {
-        if (index >= indiceActual && index < indiceActual + noticiasPorPagina) {
-            noticia.classList.add('mostrar');
-        } else {
-            noticia.classList.remove('mostrar');
-        }
-    });
+// Extraer el número de página de la ruta actual
+const numeroPagina = obtenerNumeroPagina(rutaActual);
 
-    anteriorBtn.disabled = indiceActual === 0;
-    siguienteBtn.disabled = indiceActual >= noticias.length - noticiasPorPagina;
+// Actualizar el contenido del contador de página
+contadorPagina.textContent = `Página ${numeroPagina}`;
+
+// Función para extraer el número de página de la ruta
+function obtenerNumeroPagina(ruta) {
+    // Obtener el último segmento de la ruta
+    const segments = ruta.split('/');
+    const ultimoSegmento = segments[segments.length - 1];
+
+    // Extraer el número de página de la cadena
+    const numeroPagina = ultimoSegmento.replace('.html', '');
+
+    return numeroPagina;
 }
-
-siguienteBtn.addEventListener('click', () => {
-    indiceActual += noticiasPorPagina;
-    mostrarNoticias();
-});
-
-anteriorBtn.addEventListener('click', () => {
-    indiceActual -= noticiasPorPagina;
-    mostrarNoticias();
-});
-
-mostrarNoticias();

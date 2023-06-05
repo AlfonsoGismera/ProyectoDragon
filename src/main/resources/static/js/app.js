@@ -14,29 +14,6 @@ function preventSubmit(event) {
         event.preventDefault(); // Previene el comportamiento predeterminado (enviar formulario)
     }
 }
-// Nos permite ir al principio de la pagina
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    var scrollButton = document.getElementById("scrollButton");
-    var redesSociales = document.querySelector(".redes-sociales");
-    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollPosition > redesSociales.offsetTop) {
-        scrollButton.style.display = "block";
-    } else {
-        scrollButton.style.display = "none";
-    }
-}
-
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
 
 // function buscador() {
 //     let nombre = document.getElementById("nombre");
@@ -225,7 +202,7 @@ function open_delete(id) {
 }
 
 /* #3 jQuery mejorado */
-$(document).ready(() => {
+/*$(document).ready(() => {
     $("#avatar").change(function () {
         const file = this.files[0];
         if (file) {
@@ -236,19 +213,8 @@ $(document).ready(() => {
             reader.readAsDataURL(file);
         }
     });
-});
-/*
-var randomImageUrl = 'https://picsum.photos/200/300'; // URL base del servicio de imágenes aleatorias
+});*/
 
-// Genera un número aleatorio para agregarlo a la URL y obtener una imagen diferente en cada solicitud
-var randomImageId = Math.floor(Math.random() * 1000);
-
-// Construye la URL completa con el número aleatorio
-randomImageUrl += '?random=' + randomImageId;
-
-// Asigna la URL de la imagen generada al atributo src del elemento img
-document.getElementById('randomImage').src = randomImageUrl;
-*/
 
 
 

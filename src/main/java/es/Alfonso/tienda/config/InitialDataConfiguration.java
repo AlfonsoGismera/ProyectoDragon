@@ -73,25 +73,24 @@ public class InitialDataConfiguration {
     @PostConstruct
     public void initFaccion() {
         preferenciasService.deleteAll();
-
         usuarioService.deleteAll();
         faccionService.deleteAll();
 
         Faccion fac1 = Faccion.builder()
-                .nombre("IMPERIO")
+                .nombre("Directivo")
                 .id(1)
                 .build();
 
         Faccion fac2 = Faccion.builder()
-                .nombre("TYRANIDOS")
+                .nombre("Programador")
                 .id(2)
                 .build();
         Faccion fac3 = Faccion.builder()
-                .nombre("ORKOS")
+                .nombre("Usuario")
                 .id(3)
                 .build();
         Faccion fac4 = Faccion.builder()
-                .nombre("CAOS")
+                .nombre("Diseñador")
                 .id(4)
                 .build();
 
@@ -121,7 +120,6 @@ public class InitialDataConfiguration {
                 .imagen("../img/imperio.jpg")
                 .email("alfonso.gismera@warhhamer.com")
                 .telefono("123456789")
-                .directivo(true)
                 .faccion(fac1)
                 .build();
 
@@ -134,7 +132,6 @@ public class InitialDataConfiguration {
                 .imagen("../img/ork.jpg")
                 .email("alberto.jimenez@warhhamer.com")
                 .telefono("954000000")
-                .directivo(false)
                 .faccion(fac3)
                 .build();
 
@@ -146,7 +143,6 @@ public class InitialDataConfiguration {
                 .imagen("../img/tirass.png")
                 .email("javier.jimenez@warhhamer.com")
                 .telefono("954000000")
-                .directivo(false)
                 .faccion(fac2)
                 .build();
         Usuario usr4 = Usuario.builder()
@@ -157,8 +153,7 @@ public class InitialDataConfiguration {
                 .imagen("../img/Avatar_nuevo.jpg")
                 .email("sergio.jimenez@warhhamer.com")
                 .telefono("954000000")
-                .directivo(false)
-                .faccion(fac1)
+                .faccion(fac4)
                 .build();
         //Guardamos las preferencias, tienes que guardarlas antes de la lista o casca
         Preferencias prefs1 = Preferencias.builder().idioma("en_US").usuario(usr1).build();
