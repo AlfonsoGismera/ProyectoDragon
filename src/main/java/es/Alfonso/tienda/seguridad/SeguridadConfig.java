@@ -26,11 +26,16 @@ public class SeguridadConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .antMatchers("/webjars/**", "/css/**", "/js/**", "application/json/**", "/h2-console/**").permitAll()
-                .anyRequest().authenticated()
+                // H2 esta para hacer pruebas donde no tenga la base de datos de postgrest
+                .antMatchers().permitAll()
+//                .antMatchers("/webjars/**", "/css/**", "/js/**", "application/json/**", "/h2-console/**").permitAll()
+                //.antMatchers("/").permitAll()
+                .anyRequest().permitAll()
+//                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/") // Página de inicio predeterminada
                 .permitAll()
                 .and()
                 //.rememberMe().key("AbcdEfghIjklmNopQrsTuvXyz_0123456789")

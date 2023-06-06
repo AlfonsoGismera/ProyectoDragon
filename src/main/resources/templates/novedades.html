@@ -11,8 +11,9 @@
   <!--Pruebas DMCard -->
   <link th:href="@{/css/DMCard.css}" rel="stylesheet">
   <link th:href="@{/css/carrito.css}" rel="stylesheet">
-  <link th:href="@{/css/novedades.css}" rel="stylesheet">
+  <link th:href="@{/css/Scss/novedades.css}" rel="stylesheet">
   <!--Pruebas Carrusel, tambien afecta a botones-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
@@ -26,12 +27,12 @@
 <!--Site Main-->
 <main>
   <section th:replace="fragmentos::CarritoInvi"></section>
-  <div class="container mx-auto mt-3">
-<!--      <h1 class="pb-4 mb-4 text-center "><i class="fa-solid fa-heart fa-lg"></i> Novedades <i class="fa-solid fa-heart fa-lg"></i></h1>-->
+  <!--Cartas-->
 
-      <div class="movie-card">
+  <div class="container mx-auto mt-3">
+    <div class="movie-card">
       <div class="card-overlay"></div>
-      <div >
+      <div>
         <a class="share-link" href="#">
           <i class="fa fa-heart" aria-hidden="true"></i>
         </a>
@@ -45,10 +46,8 @@
       <div class="card4">
         <div class="movie-card-description">
           <p class="movie-title">Fairy Tail</p>
-          <p class="movie-subtitle">(2006) Adventure fiction, Fantasy</p>
-          <p class="movie-shorts">Fairy Tail is set in Earth-land, a fictional land where wizards coalesce into guilds to apply their magical abilities for paid job requests.
-            Novice wizard Lucy Heartfilia runs away from home to join Fairy Tail, a guild famous for its members' overly
-            destructive antics.</p>
+          <p class="movie-subtitle">Fiction, Fantasy</p>
+          <p class="movie-shorts d-none d-md-block">Fairy Tail is set in Earth-land, a fictional land where wizards coalesce into guilds to apply their magical abilities for paid job requests. Novice wizard Lucy Heartfilia runs away from home to join Fairy Tail, a guild famous for its members' overly destructive antics.</p>
           <button type="button" class="watch-btn"><i class="fa fa-play" aria-hidden="true"></i> &emsp; Watch Trailer</button>
         </div>
       </div>
@@ -70,8 +69,8 @@
       <div class="card4">
         <div class="movie-card-description">
           <p class="movie-title">Code Geass</p>
-          <p class="movie-subtitle">(2006) Visual novel, Adventure fiction, Science Fiction</p>
-          <p class="movie-shorts">The Holy Empire of Britannia conquered the country known as Japan and now call it Area 11. Its residents lost their rights to self-govern and are now called Elevens.</p>
+          <p class="movie-subtitle">Adventure fiction, Science Fiction</p>
+          <p class="movie-shorts d-none d-md-block">The Holy Empire of Britannia conquered the country known as Japan and now call it Area 11. Its residents lost their rights to self-govern and are now called Elevens.</p>
           <button type="button" class="watch-btn"><i class="fa fa-play" aria-hidden="true"></i> &emsp; Watch Trailer</button>
         </div>
       </div>
@@ -93,15 +92,37 @@
       <div class="card4">
         <div class="movie-card-description">
           <p class="movie-title">Naruto</p>
-          <p class="movie-subtitle">(2002) Adventure fiction, Comedy, Fantasy</p>
-          <p class="movie-shorts">A powerful fox known as the Nine-Tails attacks Konoha, the hidden leaf village in the Land of Fire, one of the Five Great Shinobi Countries in the Ninja World. In response, the leader of Konoha, the Fourth Hokage, seals the fox inside the body of his newborn son, Naruto Uzumaki, making Naruto a host of the beast</p>
+          <p class="movie-subtitle"> Adventure fiction, Fantasy</p>
+          <p class="movie-shorts d-none d-md-block">A powerful fox known as the Nine-Tails attacks Konoha, the hidden leaf village in the Land of Fire, one of the Five Great Shinobi Countries in the Ninja World. In response, the leader of Konoha, the Fourth Hokage, seals the fox inside the body of his newborn son, Naruto Uzumaki, making Naruto a host of the beast</p>
           <button type="button" class="watch-btn"><i class="fa fa-play" aria-hidden="true"></i> &emsp; Watch Trailer</button>
         </div>
       </div>
-
     </div>
+    <div class="movie-card">
+      <div class="card-overlay"></div>
+      <div class="card-share">
+        <a class="share-link" href="#">
+          <i class="fa fa-heart" aria-hidden="true"></i>
+        </a>
+        <a class="share-link" href="#">
+          <i class="fa fa-comment" aria-hidden="true"></i>
+        </a>
+        <a class="share-link" href="#">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="card4">
+        <div class="movie-card-description">
+          <p class="movie-title">Naruto</p>
+          <p class="movie-subtitle">Adventure fiction Fantasy</p>
+          <p class="movie-shorts d-none d-md-block">A powerful fox known as the Nine-Tails attacks Konoha, the hidden leaf village in the Land of Fire, one of the Five Great Shinobi Countries in the Ninja World. In response, the leader of Konoha, the Fourth Hokage, seals the fox inside the body of his newborn son, Naruto Uzumaki, making Naruto a host of the beast</p>
+          <button type="button" class="watch-btn"><i class="fa fa-play" aria-hidden="true"></i> &emsp; Watch Trailer</button>
+        </div>
+      </div>
     </div>
+  </div>
 
+  <div class="container mx-auto" th:replace="Frag-Pruebas::Cartas"></div>
 </main>
 <!-- Site footer -->
 <footer th:replace="fragmentos::footer"></footer>
@@ -109,6 +130,7 @@
 <!--Scrips-->
 <script th:replace="fragmentos::CarritoInvsible"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <!--Sin esto no funciona el carrito-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" async></script>
 <script th:src="@{/js/carrito.js}" async></script>

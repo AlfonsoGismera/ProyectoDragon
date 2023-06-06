@@ -63,12 +63,10 @@
                     <div class="col-sm-6" th:classappend="${#fields.hasErrors('role')} ? 'has-error'">
                         <label for="role" class="form-label">Role</label>
                         <select class="form-control" id="role" th:field="*{role}">
-                            <option value="ROLE_ADMIN">Admin</option>
-                            <option value="ROLE_USER">User</option>
+                            <option value="ROLE_USER" th:selected="${UsuariosForm.role == 'ROLE_USER'}">User</option>
+                            <option th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" value="ROLE_ADMIN">Admin</option>
                         </select>
                     </div>
-
-
 
                     <div th:each="tipo : ${listaFaccion}">
                         <div class="col-sm-6 form-check form-check-inline">

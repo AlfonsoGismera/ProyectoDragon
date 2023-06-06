@@ -151,10 +151,21 @@ public String Pruebas(HttpServletRequest request, HttpServletResponse response, 
         return "contacto";
     }
 
+    @GetMapping("/nosotrost")
+    public String nosotrost() {
+        return "nosotrost";
+    }
+
+    @GetMapping("/privacidadp")
+    public String privacidadp() {
+        return "privacidadp";
+    }
+
     @GetMapping("/forbidden")
     public String forbidden() {
         return "forbidden";
     }
+
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public String handleNotFoundError(HttpServletResponse response) throws IOException {

@@ -20,7 +20,10 @@
     width: 100%;
     transition: .3s;
 }
+.item{
 
+    box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.3);
+}
 .contenedor .contenedor-items .item {
     max-width: 200px;
     margin: auto;
@@ -28,6 +31,7 @@
     border-radius: 10px;
     padding: 20px;
     transition: .3s;
+
 }
 
 .contenedor .contenedor-items .item .img-item {

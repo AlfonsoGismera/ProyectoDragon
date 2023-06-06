@@ -115,6 +115,7 @@ h3 {
 .line-title {
     position: relative;
     width: 400px;
+    background-color: transparent;
 }
 
 .line-title::before,

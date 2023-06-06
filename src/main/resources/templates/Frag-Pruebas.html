@@ -36,29 +36,40 @@
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item mx-lg-5">
                 <a class="nav-link px-2 text-warning" href="#" th:href="@{/Pruebas}">
-                    <i class="fa-solid fa-chess-rook fa-xl"></i>
+                    <i class="fa-solid fa-chess-rook fa-lg"></i>
                     <span th:text="#{header.Inicio}" th:classappend="${#httpServletRequest.requestURI == '/' or #httpServletRequest.requestURI == '/Pruebas'} ? 'inactive-link' : ''">Inicio</span>
                 </a>            </li>
             <li class="nav-item  mx-lg-5">
                 <!--                    Localizar border border-3 border-warning rounded-circle-->
-                <a sec:authorize="isAuthenticated()"  class="nav-link px-2 text-warning" th:href="@{/juego/listJuego}"  href="#" th:classappend="${#httpServletRequest.requestURI == '/juego/listJuego'} ? 'inactive-link' : ''">
-                    <i class="fa-solid fa-dragon fa-xl"></i>
+<!--                sec:authorize="isAuthenticated()"-->
+                <a   class="nav-link px-2 text-warning" th:href="@{/juego/listJuego}"  href="#" th:classappend="${#httpServletRequest.requestURI == '/juego/listJuego'} ? 'inactive-link' : ''">
+                    <i class="fa-solid fa-dragon fa-lg"></i>
                     <span th:text="#{header.CataJue}">Juegos</span></a>
             </li>
             <div class="navbar-center mx-lg-5">
-                <img src="" class="d-none d-md-block d-lg-block" th:src="@{../img/LogoDM.png}" alt="Logo de la página"
+                <img src="" class="d-none d-md-block d-lg-block" th:src="@{/img/LogoDM.png}" alt="Logo de la página"
                      width="60" height="60">
             </div>
             <li>
-                <a class="nav-link px-2 text-warning" href="#" th:href="@{/noticias}" th:classappend="${#httpServletRequest.requestURI == '/noticias'} ? 'inactive-link' : ''" ><i class="fa-solid fa-scroll fa-xl"></i>
+                <a class="nav-link px-2 text-warning" href="#" th:href="@{/noticias}" th:classappend="${#httpServletRequest.requestURI == '/noticias'} ? 'inactive-link' : ''" ><i class="fa-solid fa-scroll fa-lg"></i>
                     <span th:text="#{header.Noticia}">Noticias</span></a>
             </li>
             <li class="nav-item mx-lg-5">
-                <a class="nav-link px-2 text-warning" href="#" th:href="@{/novedades}" th:classappend="${#httpServletRequest.requestURI == '/novedades'} ? 'inactive-link' : ''"><i class="fa-solid fa-heart fa-xl"></i>
+                <a class="nav-link px-2 text-warning" href="#" th:href="@{/novedades}" th:classappend="${#httpServletRequest.requestURI == '/novedades'} ? 'inactive-link' : ''"><i class="fa-solid fa-heart fa-lg"></i>
                     <span  th:text="#{header.Novedades}">Novedades</span></a>
             </li>
+            <li class="nav-item">
+                <a  th:if="${#authentication.name}"  sec:authorize="!hasRole('ADMIN') and !hasRole('USER')" class="nav-link px-2 text-warning" href="#" th:href="@{/usuario/new}"><i class="fas fa-user fa-lg"></i>
+                    <span>Registrarse</span></a>
+            </li>
+            <li class="nav-item">
+                <a  th:if="${#authentication.name}"  sec:authorize="!hasRole('ADMIN') and !hasRole('USER')" class="nav-link px-2 text-warning" href="#" th:href="@{/login}">
+                    <span>Login</span> <i class="fas fa-sign-in fa-lg"></i></a>
+            </li>
+
+
         </ul>
-        <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
+        <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
         <div class="dropdown text-end d-none d-md-block d-lg-block ">
             <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1"
                data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,27 +77,25 @@
                      height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li class="dropdown-item font-weight-bold " th:text="${#authentication.name}">Pepe</li>
-                <hr>
-                <li><a class="dropdown-item" href="#" th:text="#{header.opciones}">Opciones</a></li>
-                <li><a class="dropdown-item" href="#" th:text="#{header.Perfil}">Perfil</a></li>
+                <li class="dropdown-item font-weight-bold " sec:authorize="hasRole('ADMIN') or hasRole('USER')" th:text="${#authentication.name}">Pepe</li>
+                <hr sec:authorize="hasRole('ADMIN') or hasRole('USER')">
                 <li><a class="dropdown-item" th:text="#{header.esp}" th:href="@{''(lang=es_ES)}">Español</a></li>
                 <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=fr_FR)}">Inglés</a></li>
                 <li><a class="dropdown-item" th:href="@{'/prefs/edit'}" th:text="#{header.prefe}">Editar
                     preferencias</a></li>
-                <li><a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
+                <li><a href="#"
                        th:href="@{/usuario/new}"
                        th:text="#{header.meter}" class="dropdown-item">Añadir usuario</a></li>
                 <li>
                 <li>
-                    <a sec:authorize="isAuthenticated()" class="dropdown-item" href="#"
-                       th:href="@{/usuario/list}"><span th:text="#{header.Usuarios}">Usuarios</span></a>
+                    <a  class="dropdown-item" href="#"
+                       th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" th:href="@{/usuario/list}"><span th:text="#{header.Usuarios}">Usuarios</span></a>
                 </li>
                 <li><a th:if="${#authentication.name}" sec:authorize="hasRole('ADMIN')" href="#"
                        th:href="@{/juego/new}"
                        th:text="#{header.meterJuego}" class="dropdown-item">Añadir Juego</a></li>
                 <li>
-             <span class="dropdown-item"
+             <span sec:authorize="hasRole('ADMIN')" class="dropdown-item"
                    th:each="cookie : ${#request.cookies}"
                    th:if="${cookie.getName() == #authentication.getName()}"
                    th:text="#{header.visitas} + ': ' + ${cookie.getValue()}">
@@ -95,7 +104,7 @@
                 </li>
                 <li>
                     <!--/*@thymesVar id="num_Usuarios" type=""*/-->
-                    <span class="dropdown-item" th:text="#{header.numUsuarios} + ': ' + ${session.num_Usuarios}"></span>
+                    <span sec:authorize="hasRole('ADMIN')" class="dropdown-item" th:text="#{header.numUsuarios} + ': ' + ${session.num_Usuarios}"></span>
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -126,7 +135,7 @@
 <!--Carrusel-->
 <div th:fragment="Carrusel">
     <section class="game-section">
-        <h2 class="line-title"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i> Juegos en tendencias </h2>
+        <h2 class="line-title shadow-lg"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i>Juegos en tendencias </h2>
         <div class="progress-bar"></div>
         <div class="owl-carousel custom-carousel owl-theme">
             <div class="item active"
@@ -185,7 +194,6 @@
 </div>
 <!--Cartas-->
 <div th:fragment="Cartas">
-    <h1><i class="fa-solid fa-heart fa-lg"></i> Novedades <i class="fa-solid fa-heart fa-lg"></i></h1>
 
     <div class="boxesContainer mb-2">
 
@@ -255,7 +263,7 @@
             </div>
         </div>
 
-        <div class="cardBox">
+        <div class="cardBox mb-2">
             <div class="card2">
                 <div class="front">
                     <h3>Aeonia</h3>
@@ -271,7 +279,7 @@
         </div>
 
         <div class="cardBox">
-            <div class="card2">
+            <div class="card2  mb-2">
                 <div class="front">
                     <h3>Elysium</h3>
                     <p>The City In The Sky</p>
@@ -285,7 +293,7 @@
             </div>
         </div>
 
-        <div class="cardBox">
+        <div class="cardBox  mb-2">
             <div class="card2">
                 <div class="front">
                     <h3>Karvac</h3>
@@ -300,7 +308,7 @@
             </div>
         </div>
 
-        <div class="cardBox">
+        <div class="cardBox  mb-2">
             <div class="card2">
                 <div class="front">
                     <h3>The Veiled Shore</h3>
@@ -314,18 +322,18 @@
                 </div>
             </div>
         </div>
-
-
+        <!--Esto es para que no s haga un espacio en blanco por que las cartas se comen lo de abajo-->
+        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
     </div>
 </div>
 
-<section th:fragment="Carrito" class="contenedor">
+<section th:fragment="Carrito"  class="contenedor">
     <!-- Contenedor de elementos -->
     <div class="contenedor-items">
         <div class="item">
             <span class="titulo-item">7 de Mar Cabernod</span>
-            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt="" width="158" height="200"
-                 class="img-item">
+            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt=""
+                 width="158" height="200" class="img-item">
             <span class="precio-item">$15</span>
             <button class="boton-item">Agregar al Carrito</button>
         </div>
@@ -396,9 +404,14 @@
                     </span>
             </div>
             <label for="destinatario">Destinatario:</label>
+            <label class="hidden"  for="usuario">Usuario:</label>
+            <input class="hidden" type="text" id="usuario" name="Usuario" th:value="${#authentication.name}" required>
             <input type="email" id="destinatario" name="Destinatario" required>
             <label for="mensaje" class="hidden">Mensaje:</label>
             <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>
+            <!-- Campo que rocoje el  usuario y lo añade esta  oculto -->
+
+
 
             <!-- Campo oculto para el mensaje de agradecimiento -->
             <input type="hidden" id="agradecimiento" name="agradecimiento" value="¡Gracias por elegir El Dragón en la Mesa, tu compañero de compras en línea!.">
@@ -494,7 +507,7 @@
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0IQoa18olmN1Yk8HT9x9BF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
-<script th:src="@{/js/DMCard.js}" async ></script>
-<script th:src="@{/webjars/jquery/jquery.min.js}" async></script>
+<script th:src="@{/js/DMCard.js}"  ></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 </body>
 </html>

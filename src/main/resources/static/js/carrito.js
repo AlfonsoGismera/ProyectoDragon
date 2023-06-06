@@ -8,6 +8,81 @@ if (document.readyState === 'loading') {
     ready();
 }
 
+// filtrar invisibles
+function filtrarItems() {
+    // Obtener el campo de entrada de búsqueda
+    const searchInput = document.getElementById('searchInput');
+
+    // Obtener la sección del carrito
+    const carritoSection = document.getElementById('carritoSection');
+
+    // Agregar un evento de escucha al campo de entrada de búsqueda
+    searchInput.addEventListener('input', function () {
+        // Obtener el valor de búsqueda ingresado por el usuario
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Obtener todos los elementos de título en la página
+        const items = document.getElementsByClassName('titulo-item');
+
+        // Verificar si hay un término de búsqueda
+        if (searchTerm.length > 0) {
+            // Mostrar la sección del carrito
+            carritoSection.style.display = '';
+        } else {
+            // Ocultar la sección del carrito
+            carritoSection.style.display = 'none';
+        }
+
+        // Recorrer los elementos y mostrar u ocultar según el término de búsqueda
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            const title = item.textContent.toLowerCase();
+
+            // Verificar si el título contiene el término de búsqueda
+            if (title.includes(searchTerm)) {
+                item.parentNode.style.display = ''; // Mostrar el elemento
+            } else {
+                item.parentNode.style.display = 'none'; // Ocultar el elemento
+            }
+        }
+    });
+}
+
+// Llamar a la función cuando se cargue la página
+window.addEventListener('DOMContentLoaded', filtrarItems);
+
+<!--Pruebas email-->
+document.getElementById("carrito").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    let form = event.target;
+    let destinatario = form.destinatario.value;
+    let mensaje = form.agradecimiento.value;
+    let nombreUsuario = form.usuario.value; // Obtener el valor del campo "usuario"
+
+    let formData = new FormData();
+    formData.append("destinatario", destinatario);
+    formData.append("agradecimiento", mensaje);
+    formData.append("usuario", nombreUsuario); // Agregar el nombre de usuario al FormData
+
+    let url = "https://formsubmit.co/ajax/" + destinatario;
+    fetch(url, {
+        method: "POST",
+        body: formData,
+    })
+        .then(function (response) {
+            if (response.ok) {
+                alert("Correo enviado exitosamente");
+                form.reset();
+            } else {
+                alert("Error al enviar el correo");
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert("Error al enviar el correo");
+        });
+});
 function ready() {
 
     //Agregremos funcionalidad a los botones eliminar del carrito

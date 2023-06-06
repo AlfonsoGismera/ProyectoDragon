@@ -94,11 +94,11 @@ public class UserController {
     public String editarUsuarioForm(@PathVariable long id, Model model, HttpSession session) {
 
         Usuario usuario = usuarioService.findById(id);
+
         if (usuario != null) {
             model.addAttribute("UsuariosForm", usuario);
-            usuarioService.edit(usuario);
+            session.setAttribute("ViejoUsuario", usuario); // Almacenar el usuario original en la sesión
             return "form";
-
         } else {
             return "redirect:/usuario/new";
         }
@@ -107,7 +107,8 @@ public class UserController {
     @PostMapping("/edit/submit")
     public String editarUsuarioSubmit(@Valid @ModelAttribute("UsuariosForm") Usuario usuario,
                                       @RequestParam("file") MultipartFile file,
-                                      BindingResult bindingResult) {
+                                      BindingResult bindingResult,
+                                      HttpSession session) {
 
         if (bindingResult.hasErrors()) {
             return "form";
@@ -119,11 +120,20 @@ public class UserController {
                         .fromMethodName(UserController.class, "serveFile", avatar).build().toUriString());
                 log.info("imagen {}", usuario.getImagen());
             }
-            usuarioService.edit(usuario);
+
+            Usuario usuarioOriginal = (Usuario) session.getAttribute("ViejoUsuario");
+
+            if (usuario.getPassword().equals(usuarioOriginal.getPassword())) {
+                usuarioService.edit(usuario);
+            } else {
+                usuarioService.registrar(usuario);
+                session.invalidate(); // Eliminar la sesión para que no vaya alamcenadolas
+            }
+
             return "redirect:/usuario/list";
         }
-
     }
+
 
 
     @GetMapping("/delete/{id}")

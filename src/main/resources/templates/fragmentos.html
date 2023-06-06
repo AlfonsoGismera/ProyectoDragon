@@ -8,7 +8,7 @@
     <title>Fragmentos</title>
     <th:block th:fragment="bootstrap">
 <!--        Icono de la web -->
-        <link rel="icon" href="../img/icono.png"  type="image/x-icon">
+        <link rel="icon" href="/img/icono.png"  type="image/x-icon">
         <!-- Bootstrap core CSS -->
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
         <!--Bootstrap Foooter  -->
@@ -16,9 +16,7 @@
         <!--Bootstrap Header  -->
         <link th:href="@{/css/headers.css}" rel="stylesheet">
         <link th:href="@{/css/Scss/DmTienda.css}" rel="stylesheet">
-
-        <!--Bootstrap Blog  -->
-<!--        <link th:href="@{/css/blog.css}" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <!-- Font awesome icons -->
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet">
     </th:block>
@@ -227,12 +225,17 @@
                     </span>
             </div>
             <label for="destinatario">Destinatario:</label>
+            <label class="hidden"  for="usuario">Usuario:</label>
+            <input class="hidden" type="text" id="usuario" name="Usuario" th:value="${#authentication.name}" required>
             <input type="email" id="destinatario" name="Destinatario" required>
             <label for="mensaje" class="hidden">Mensaje:</label>
             <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>
+            <!-- Campo que rocoje el  usuario y lo añade esta  oculto -->
+
+
 
             <!-- Campo oculto para el mensaje de agradecimiento -->
-            <input type="hidden" id="agradecimiento" name="agradecimiento" value="Gracias por tu compra.">
+            <input type="hidden" id="agradecimiento" name="agradecimiento" value="¡Gracias por elegir El Dragón en la Mesa, tu compañero de compras en línea!.">
             <button type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
         </div>
 
@@ -253,7 +256,7 @@
 
 
             <div class="col-xs-6 col-md-3">
-                <h6 th:text="#{footer.categoria}">Categorias</h6>
+                <h6 th:text="#{footer.categoria}">Categorías</h6>
                 <ul class="footer-links">
                     <li><a href="https://warhammer40k.fandom.com/es/wiki/Imperio_de_la_Humanidad" target="_blank">El
                         Imperio</a></li>
@@ -266,15 +269,15 @@
             </div>
 
             <div class="col-xs-6 col-md-3">
-                <h6 th:text="#{footer.link}">Links Rapidos</h6>
+                <h6 th:text="#{footer.link}">Links Rápidos</h6>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fab fa-blogger-b"></i> <span th:text="#{footer.sobreNosotros}">Sobre nosotros</span></a>
+                    <li><a href="#" th:href="@{/nosotrost}"><i class="fab fa-blogger-b"></i> <span th:text="#{footer.sobreNosotros}">Sobre nosotros</span></a>
                     </li>
                     <li><a href="#" th:href="@{/contacto}" ><i class="fab fa-telegram"></i> <span th:text="#{footer.cNosotros}">Contacta con nosotros</span></a>
                     </li>
                     <li><a href="#"><i class="fas fa-hands-helping"></i> <span
                             th:text="#{footer.contribuye}">Contribuye</span></a></li>
-                    <li><a href="#"><i class="fas fa-user-secret"></i> <span th:text="#{footer.poliPriv}">Politicas de Privacidad</span></a>
+                    <li><a href="#" th:href="@{/privacidadp}" ><i class="fas fa-user-secret"></i> <span th:text="#{footer.poliPriv}">Politicas de Privacidad</span></a>
                     </li>
                 </ul>
             </div>

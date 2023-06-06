@@ -43,8 +43,8 @@ public class UsuarioService {
         return result;
     }
 
-    public Usuario edit(Usuario e) {
-        return repositorio.save(e);
+    public Usuario edit(Usuario u) {
+        return repositorio.save(u);
     }
 
     public void delete(Usuario e) {
