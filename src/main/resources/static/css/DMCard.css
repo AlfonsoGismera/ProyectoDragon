@@ -23,6 +23,27 @@
 .twitter-timeline{
     max-width: 50%;
 }
+/*Redes*/
+.redes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.redes-item {
+    margin: 10px;
+}
+
+/* Ajustar tamaño en dispositivos móviles */
+@media (max-width: 767px) {
+    .redes-item {
+        width: 100%;
+    }
+}
+/* Cambia el color a btn-warning (amarillo) */
+.navbar-toggler.btn-warning:not(:hover) {
+    background-color: #ffc107;
+}
 /*Boton e ir hacia arriba*/
 #scrollButton {
     display: none;

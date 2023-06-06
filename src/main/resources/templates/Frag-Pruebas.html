@@ -35,8 +35,10 @@
 
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item mx-lg-5">
-                <a class="nav-link px-2 text-warning" href="#" th:href="@{/Pruebas}"><i class="fa-solid fa-chess-rook fa-xl"></i> <span th:text="#{header.Inicio}" th:classappend="${#httpServletRequest.requestURI == '/Pruebas'} ? 'inactive-link' : ''">Inicio</span></a>
-            </li>
+                <a class="nav-link px-2 text-warning" href="#" th:href="@{/Pruebas}">
+                    <i class="fa-solid fa-chess-rook fa-xl"></i>
+                    <span th:text="#{header.Inicio}" th:classappend="${#httpServletRequest.requestURI == '/' or #httpServletRequest.requestURI == '/Pruebas'} ? 'inactive-link' : ''">Inicio</span>
+                </a>            </li>
             <li class="nav-item  mx-lg-5">
                 <!--                    Localizar border border-3 border-warning rounded-circle-->
                 <a sec:authorize="isAuthenticated()"  class="nav-link px-2 text-warning" th:href="@{/juego/listJuego}"  href="#" th:classappend="${#httpServletRequest.requestURI == '/juego/listJuego'} ? 'inactive-link' : ''">
@@ -56,7 +58,7 @@
                     <span  th:text="#{header.Novedades}">Novedades</span></a>
             </li>
         </ul>
-        <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
+        <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
         <div class="dropdown text-end d-none d-md-block d-lg-block ">
             <a href="#" class="d-block link-white text-decoration-none dropdown-toggle" id="dropdownUser1"
                data-bs-toggle="dropdown" aria-expanded="false">
@@ -108,7 +110,7 @@
     </div>
     <!--Buscador-Nav-->
     <!-- Verifica si la página actual es "/Pruebas" o "/juegos/listJuegos" -->
-    <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
+    <th:block th:if="${#httpServletRequest.requestURI == '/Pruebas' or #httpServletRequest.requestURI == '/' or #httpServletRequest.requestURI == '/juego/listJuego' or #httpServletRequest.requestURI == '/noticias' or #httpServletRequest.requestURI == '/noticias1' or #httpServletRequest.requestURI == '/noticias2' or #httpServletRequest.requestURI == '/novedades'}">
 <!--        <form class="d-none d-md-block col-8 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="post" action="#"
               th:action="@{/usuario/list/filter}">
             <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" onkeydown="preventSubmit(event)" onkeyup="handleSearch()">
@@ -125,6 +127,7 @@
 <div th:fragment="Carrusel">
     <section class="game-section">
         <h2 class="line-title"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i> Juegos en tendencias </h2>
+        <div class="progress-bar"></div>
         <div class="owl-carousel custom-carousel owl-theme">
             <div class="item active"
                  style="background-image: url(https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg);">
@@ -407,13 +410,13 @@
 <!--Redes sociales-->
 <div class="redes-sociales" th:fragment="Social">
     <h1>Redes sociales</h1>
-    <div style="display: flex; justify-content: center;">
-        <div style="margin: 10px;">
+    <div class="redes-container">
+        <div class="redes-item">
             <!-- Bloque de Twitter -->
             <a class="twitter-timeline" data-height="600" data-width="350" data-dnt="true" data-theme="dark"
                href="https://twitter.com/warjack1999?ref_src=twsrc%5Etfw">Tweets by warjack1999</a>
         </div>
-        <div style="margin: 10px;">
+        <div class="redes-item">
             <!--  Bloque de Instagram -->
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             <blockquote class="instagram-media" data-instgrm-captioned
@@ -476,7 +479,7 @@
                            target="_blank">Una publicación compartida de Alf (@warjack_42)</a></p></div>
             </blockquote>
         </div>
-        <div style="margin: 10px;">
+        <div class="redes-item d-none d-md-block">
             <!-- Bloque de Facebook -->
             <script async src="//www.instagram.com/embed.js"></script>
             <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fleondrummer%2Fposts%2Fpfbid023Zo8Z1xfeHuDRKYRwMj8nbDF5t4BxnjTb6phh3MgMnb9vCBa7wVbbzqP1Sci1rBQl&show_text=true&width=350"

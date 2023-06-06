@@ -146,6 +146,10 @@ public String Pruebas(HttpServletRequest request, HttpServletResponse response, 
     public String humanidad2() {
         return "noticias2";
     }
+    @GetMapping("/contacto")
+    public String contacto() {
+        return "contacto";
+    }
 
     @GetMapping("/forbidden")
     public String forbidden() {

@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <title>Fragmentos</title>
     <th:block th:fragment="bootstrap">
+<!--        Icono de la web -->
+        <link rel="icon" href="../img/icono.png"  type="image/x-icon">
         <!-- Bootstrap core CSS -->
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
         <!--Bootstrap Foooter  -->
@@ -268,7 +270,7 @@
                 <ul class="footer-links">
                     <li><a href="#"><i class="fab fa-blogger-b"></i> <span th:text="#{footer.sobreNosotros}">Sobre nosotros</span></a>
                     </li>
-                    <li><a href="#"><i class="fab fa-telegram"></i> <span th:text="#{footer.cNosotros}">Contacta con nosotros</span></a>
+                    <li><a href="#" th:href="@{/contacto}" ><i class="fab fa-telegram"></i> <span th:text="#{footer.cNosotros}">Contacta con nosotros</span></a>
                     </li>
                     <li><a href="#"><i class="fas fa-hands-helping"></i> <span
                             th:text="#{footer.contribuye}">Contribuye</span></a></li>

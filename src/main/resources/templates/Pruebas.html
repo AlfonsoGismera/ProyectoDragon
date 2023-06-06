@@ -34,26 +34,11 @@
     <hr>
     <!--Cartas-->
     <div class="container mx-auto" th:replace="Frag-Pruebas::Cartas"></div>
-    <!--Pruebas-->
-<!--    <hr>-->
-<!--    <form class="mb-2 mt-2 ml-2" id="emailForm">-->
-<!--        <label for="destinatario">Destinatario:</label>-->
-<!--        <input type="email" id="destinatario" name="Destinatario" required>-->
 
-<!--        <label for="asunto">Asunto:</label>-->
-<!--        <input type="text" id="asunto" name="Asunto" required>-->
-
-<!--        <label for="mensaje" class="hidden">Mensaje:</label>-->
-<!--        <textarea id="mensaje" name="Mensaje" class="hidden"></textarea>-->
-
-<!--        &lt;!&ndash; Campo oculto para el mensaje de agradecimiento &ndash;&gt;-->
-<!--        <input type="hidden" id="agradecimiento" name="agradecimiento" value="Gracias por tu mensaje.">-->
-
-<!--        <button type="submit">Enviar correo</button>-->
-<!--    </form>-->
     <!-- Noticias -->
-    <h1><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
     <hr>
+    <h1 class=" mt-2 mb-2"><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
+
     <div class="row mb-2 container mx-auto">
         <div class="col-md-6 zoom">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -70,8 +55,6 @@
 
                     <img class="img-fluid img-thumbnail " src="" th:src="@{../img/Emperador.jpg}" width="195"
                          height="200" alt=""/>
-
-                    <!--            <img src="" th:src="@{'https://www.games-workshop.com/resources/catalog/product/600x620/99120101353_HonouredoftheChapterLead.jpg'}" width="200" height="250" />-->
                 </div>
             </div>
         </div>
@@ -92,7 +75,6 @@
                 </div>
             </div>
         </div>
-        <!-- Hasta aqui     -->
         <div class="col-md-6 mt-2 zoom">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
@@ -201,6 +183,7 @@
 <script th:src="@{/js/carrusel.js}" async></script>
 <script th:src="@{/js/carrito.js}" async></script>
 <script th:src="@{/js/app.js}" async></script>
+
 <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
         server: '1105057341281423400', // El Dragón de La Mesa
