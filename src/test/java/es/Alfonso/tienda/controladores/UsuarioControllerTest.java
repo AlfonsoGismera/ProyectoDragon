@@ -12,6 +12,7 @@
 //import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 //import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 //import org.springframework.boot.test.mock.mockito.MockBean;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.test.web.servlet.MockMvc;
 //import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 //import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -34,6 +35,8 @@
 //    private StorageService storageService;
 //    @MockBean
 //    private I18nService servicioInternacionalizacion;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 //
 //    @Autowired
 //    private MockMvc mockMvc;
@@ -43,17 +46,19 @@
 //    void listado_shouldReturnViewWithPrefilledData() throws Exception {
 //
 //        Faccion dep3 = Faccion.builder()
-//                .nombre("ORKOS")
+//                .nombre("User")
 //                .build();
 //
 //        // Crear una lista de empleados con un usuarios para el test
 //        Usuario e = Usuario.builder()
-//                .id(3)
+//                .id(2)
+//                .username("user")
+//                .password(passwordEncoder.encode("user"))
+//                .role("ROLE_USER")
 //                .nombre("Javier Jimenez")
 //                .imagen("../img/tirass.png")
 //                .email("javier.jimenez@warhhamer.com")
 //                .telefono("954000000")
-//                .directivo(false)
 //                .faccion(dep3)
 //                .build();
 //        List<Usuario> lista = Arrays.asList(e);
