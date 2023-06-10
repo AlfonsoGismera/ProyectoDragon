@@ -30,7 +30,7 @@ public class PreferenciasController {
 
         Preferencias preferencias = preferenciasService.findUsuarioPreferencias().orElse(null);
         model.addAttribute("preferenciasForm", preferencias);
-        model.addAttribute("opcionesIdioma", Map.of("es_ES", "Español", "en_US", "Inglés"));
+        model.addAttribute("opcionesIdioma", Map.of("es_ES", "Español", "fr_FR", "Inglés"));
         return "prefs-form";
     }
 

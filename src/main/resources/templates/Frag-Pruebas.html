@@ -81,11 +81,11 @@
                 <hr sec:authorize="hasRole('ADMIN') or hasRole('USER')">
                 <li><a class="dropdown-item" th:text="#{header.esp}" th:href="@{''(lang=es_ES)}">Español</a></li>
                 <li><a class="dropdown-item" th:text="#{header.ingles}" th:href="@{''(lang=fr_FR)}">Inglés</a></li>
-                <li><a class="dropdown-item" th:href="@{'/prefs/edit'}" th:text="#{header.prefe}">Editar
+                <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{'/prefs/edit'}" th:text="#{header.prefe}">Editar
                     preferencias</a></li>
                 <li><a href="#"
                        th:href="@{/usuario/new}"
-                       th:text="#{header.meter}" class="dropdown-item">Añadir usuario</a></li>
+                       th:text="#{header.meter}" sec:authorize="hasRole('ADMIN')" class="dropdown-item">Añadir usuario</a></li>
                 <li>
                 <li>
                     <a  class="dropdown-item" href="#"
@@ -125,7 +125,7 @@
             <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" onkeydown="preventSubmit(event)" onkeyup="handleSearch()">
         </form>-->
         <div class="d-none d-md-block col-8 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="text" class="form-control" id="searchInput" placeholder="Buscar por título" />
+            <input type="text" class="form-control" id="searchInput"  th:placeholder="#{search.placeholder}" />
 
         </div>
     </th:block>
@@ -135,22 +135,22 @@
 <!--Carrusel-->
 <div th:fragment="Carrusel">
     <section class="game-section">
-        <h2 class="line-title shadow-lg"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i>Juegos en tendencias </h2>
+        <h2 class="line-title shadow-lg"><i class="fa-brands fa-critical-role fa-beat fa-xl"></i><span th:text="#{h1.carru}"> Juegos en tendencias</span> </h2>
         <div class="progress-bar"></div>
         <div class="owl-carousel custom-carousel owl-theme">
             <div class="item active"
-                 style="background-image: url(https://ucarecdn.com/75d7700d-c102-40ff-9ba1-f0641444c616/dota2.jpg);">
+                 style="background-image: url(https://muevecubos.com/gimg/36/233078.jpg);">
                 <div class="item-desc">
-                    <h3>Dota 2</h3>
-                    <p>Dota 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                    <h3>Twilight Imperium</h3>
+                    <p th:text="#{carrusel.t1}">Un épico juego de mesa de tablero de conquista, política y comercio. "Twilight Imperium (4ª edición)" es un juego de estrategia táctica con una gran narrativa, en el que los jugadores se ponen al frente de una de las diecisiete civilizaciones
+                        únicas para competir por la supremacia interestelar mediante la guerra, el comercio, alianzas inciertas y la dominación política.</p>
                 </div>
             </div>
             <div class="item"
                  style="background-image: url(https://ucarecdn.com/2a5f69bc-befa-49f4-acc6-ab1dcae514c7/winter3.jpg);">
                 <div class="item-desc">
                     <h3>The Witcher 3</h3>
-                    <p>The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
+                    <p th:text="#{carrusel.t2}">The Witcher 3 is a multiplayer online battle arena by Valve. The game is a sequel to Defense
                         of the Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft
                         III.</p>
                 </div>
@@ -159,33 +159,32 @@
                  style="background-image: url(https://ucarecdn.com/ec1918b1-2674-452c-bf61-8f73d8cc40c6/rdr2.jpg);">
                 <div class="item-desc">
                     <h3>RDR 2</h3>
-                    <p>RDR 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                    <p- th:text="#{carrusel.t3}">Red Dead Redemption 2 es un épico juego de rol ambientado en el salvaje oeste, lleno de aventuras, forajidos y vastos paisajes. Explora. Es un épico juego de rol ambientado en el salvaje oeste, lleno de aventuras,
+                        forajidos y vastos paisajes. Explora, roba y sobrevive en un mundo abierto implacable.</p->
                 </div>
             </div>
             <div class="item"
-                 style="background-image: url(https://ucarecdn.com/6ba9052d-6105-4491-917b-e1a65b68f920/pubg.jpg);">
+                 style="background-image: url(https://1.bp.blogspot.com/-mfRUOnVm5sI/VGDqOwslvwI/AAAAAAAACj4/7UQ_gtQN-xI/s1600/std.jpg);">
                 <div class="item-desc">
-                    <h3>PUBG Mobile</h3>
-                    <p>PUBG 2 is a multiplayer online battle arena by Valve. The game is a sequel to Defense of the
-                        Ancients, which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                    <h3>Akuma</h3>
+                    <p th:text="#{carrusel.t4}">Akuma es un juego de rol emocionante y adictivo que está arrasando en la escena actual. Sumérgete en un mundo lleno de misterio y magia, donde podrás crear tu propio personaje y vivir aventuras épicas. Explora vastos territorios,
+                        combate en emocionantes batallas y desata tu poder para convertirte en un verdadero héroe. ¡Descubre el fenómeno de Akuma y únete a la tendencia ahora mismo!</p>
                 </div>
             </div>
             <div class="item"
-                 style="background-image: url(https://ucarecdn.com/77598be3-c67f-40de-83d3-71a0f2f76c56/fortnite.jpg);">
+                 style="background-image: url(https://www.lascosasquenoshacenfelices.com/wp-content/uploads/2022/09/maxresdefault-43-e1664207129115.jpg);">
                 <div class="item-desc">
-                    <h3>Fortnite</h3>
-                    <p>Battle royale where 100 players fight to be the last person standing. which was a
-                        community-created mod
-                        for Blizzard Entertainment's Warcraft III.</p>
+                    <h3>Cyberpunk</h3>
+                    <p th:text="#{carrusel.t5}">Cyberpunk es la última sensación en juegos de rol. Sumérgete en un futuro distópico y tecnológico, donde hackearás sistemas, lucharás contra megacorporaciones y forjarás tu camino en una metrópolis cyberpunk llena de peligro y oportunidades.
+                        ¡Únete a la revolución cibernética ahora!.</p>
                 </div>
             </div>
             <div class="item"
-                 style="background-image: url(https://ucarecdn.com/ed548880-32e4-42af-9d4e-632623903256/farcry5.jpg);">
+                 style="background-image: url(https://m.media-amazon.com/images/I/819LGyPT2qL._AC_SY679_.jpg);">
                 <div class="item-desc">
-                    <h3>Far Cry 5</h3>
-                    <p>Far Cry 5 is a 2018 first-person shooter game developed by Ubisoft.
-                        which was a community-created mod for Blizzard Entertainment's Warcraft III.</p>
+                    <h3>Game of Thrones</h3>
+                    <p th:text="#{carrusel.t6}">La épica saga canción de hielo y fuego, de george r. R. Martin, lleva cautivando a sus lectores más de una década, e incluso se ha llevado con gran éxito a la televisión. Ahora podréis narrar vuestras propias historias de poniente y participar en el juego de tronos con canción de hielo y fuego: el juego de rol. Este manual básico
+                        incluye todo lo necesario para crear vuestras propias y emocionantes historias de honor.</p>
                 </div>
             </div>
         </div>
@@ -200,13 +199,13 @@
         <div class="cardBox">
             <div class="card2">
                 <div class="front">
-                    <h3>The Ebony Forest</h3>
-                    <p>Near Havarguard, Winter Territory</p>
+                    <h3 th:text="#{cartas.t1}">El bosque de Ébano</h3>
+                    <p th:text="#{cartas.c1}">Cerca de Havarguard, territorio de invierno</p>
                     <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Forest of Nightmares</h3>
-                    <h4>The Ebony Forest is called such because of the ebony colored trees that call this land home.
+                    <h3 th:text="#{cartas.tb1}">Forest of Nightmares</h3>
+                    <h4 th:text="#{cartas.ct1}">The Ebony Forest is called such because of the ebony colored trees that call this land home.
                         It's thick canopy prevents any light from reaching the forest floor, making it the darkest.</h4>
 
                 </div>
@@ -216,13 +215,13 @@
         <div class="cardBox">
             <div class="card2">
                 <div class="front">
-                    <h3>Twilight Lands</h3>
-                    <p>Border Territory</p>
+                    <h3 th:text="#{cartas.t2}">Tierras Crepusculares</h3>
+                    <p th:text="#{cartas.c2}">Border Territory</p>
                     <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Back Side Two</h3>
-                    <h4>In order to reach the Heart of the Land, the Elder Tree, at the center of the Realm, you must
+                    <h3 th:text="#{cartas.tb2}" >Back Side Two</h3>
+                    <h4 th:text="#{cartas.ct2}">In order to reach the Heart of the Land, the Elder Tree, at the center of the Realm, you must
                         venture through the Twilight Lands. It's given its name due to the area being in a constant
                         state of twilight, where the sun neither rises nor sets. It's often thought of by humans as a
                         metaphor for the Wyld being creatures of the In-Between.</h4>
@@ -234,13 +233,13 @@
         <div class="cardBox">
             <div class="card2">
                 <div class="front">
-                    <h3>Havarguard</h3>
-                    <p>Winter Territory</p>
+                    <h3 th:text="#{cartas.t3}">Havarguard</h3>
+                    <p th:text="#{cartas.c3}">Winter Territory</p>
                     <strong><img src="https://i.imgur.com/fKu8xAM.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Back Side Three</h3>
-                    <h4>Havarguard was established by a settlement of nomadic humans who were given permission by the
+                    <h3 th:text="#{cartas.tb3}">Back Side Three</h3>
+                    <h4 th:text="#{cartas.ct3}">Havarguard was established by a settlement of nomadic humans who were given permission by the
                         Mab to claim the land.</h4>
 
                 </div>
@@ -250,13 +249,13 @@
         <div class="cardBox">
             <div class="card2">
                 <div class="front">
-                    <h3>Selaris</h3>
-                    <p>Summer Territory</p>
+                    <h3 th:text="#{cartas.t4}">Selaris</h3>
+                    <p th:text="#{cartas.c4}">Summer Territory</p>
                     <strong><img src="https://i.imgur.com/v58rK4d.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>The City of Stars</h3>
-                    <h4>Located at the bottom of the highest peaked mountain in the realm, Selaris was declared as the
+                    <h3 th:text="#{cartas.tb4}">The City of Stars</h3>
+                    <h4 th:text="#{cartas.ct4}">Located at the bottom of the highest peaked mountain in the realm, Selaris was declared as the
                         Capital of the Summer Court.</h4>
 
                 </div>
@@ -266,13 +265,13 @@
         <div class="cardBox mb-2">
             <div class="card2">
                 <div class="front">
-                    <h3>Aeonia</h3>
-                    <p>Spring Territory</p>
+                    <h3 th:text="#{cartas.t5}">Aeonia</h3>
+                    <p th:text="#{cartas.c5}">Spring Territory</p>
                     <strong><img src="https://i.imgur.com/qZEJDII.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Back Side Four</h3>
-                    <h4>Content in card four</h4>
+                    <h3 th:text="#{cartas.tb5}">Back Side Four</h3>
+                    <h4 th:text="#{cartas.ct5}">Content in card four</h4>
 
                 </div>
             </div>
@@ -281,13 +280,13 @@
         <div class="cardBox">
             <div class="card2  mb-2">
                 <div class="front">
-                    <h3>Elysium</h3>
-                    <p>The City In The Sky</p>
+                    <h3 th:text="#{cartas.t6}">Elysium</h3>
+                    <p th:text="#{cartas.c6}">The City In The Sky</p>
                     <strong><img src="https://i.imgur.com/S3lXMTI.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>City of the Artherals</h3>
-                    <h4>Content in card four</h4>
+                    <h3 th:text="#{cartas.tb6}">City of the Artherals</h3>
+                    <h4 th:text="#{cartas.ct6}">Content in card four</h4>
 
                 </div>
             </div>
@@ -296,13 +295,13 @@
         <div class="cardBox  mb-2">
             <div class="card2">
                 <div class="front">
-                    <h3>Karvac</h3>
-                    <p>Winter Territory</p>
+                    <h3 th:text="#{cartas.t7}">Karvac</h3>
+                    <p th:text="#{cartas.c7}">Winter Territory</p>
                     <strong><img src="https://i.imgur.com/fKu8xAM.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Back Side Four</h3>
-                    <h4>Karvac serves as the primary trading center for the Winter territory. </h4>
+                    <h3 th:text="#{cartas.tb7}">Back Side Four</h3>
+                    <h4 th:text="#{cartas.ct7}">Karvac serves as the primary trading center for the Winter territory. </h4>
 
                 </div>
             </div>
@@ -311,13 +310,13 @@
         <div class="cardBox  mb-2">
             <div class="card2">
                 <div class="front">
-                    <h3>The Veiled Shore</h3>
-                    <p>Hover to flip</p>
+                    <h3 th:text="#{cartas.t8}">The Veiled Shore</h3>
+                    <p th:text="#{cartas.c8}">Hover to flip</p>
                     <strong><img src="https://i.imgur.com/XN8tOHc.png" alt=""></strong>
                 </div>
                 <div class="back">
-                    <h3>Back Side Four</h3>
-                    <h4>Content in card four</h4>
+                    <h3 th:text="#{cartas.tb8}">Back Side Four</h3>
+                    <h4 th:text="#{cartas.ct8}">Content in card four</h4>
 
                 </div>
             </div>
@@ -332,65 +331,65 @@
     <div class="contenedor-items">
         <div class="item">
             <span class="titulo-item">7 de Mar Cabernod</span>
-            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt=""
-                 width="158" height="200" class="img-item">
+            <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt="" width="158" height="200"
+                 class="img-item">
             <span class="precio-item">$15</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">7 de Mar Corsarios </span>
             <img src="https://www.nosolorol.com/913-large_default/7-mar-pantalla-del-dj-papel.jpg" alt="" width="158"
                  height="200" class="img-item">
             <span class="precio-item">$25</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">2024</span>
             <img src="https://www.nosolorol.com/3349-large_default/2084-rebajas-roleras-de-primavera.jpg" width="158"
                  height="200" alt="" class="img-item">
             <span class="precio-item">$35</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">La Night</span>
             <img src="https://www.nosolorol.com/2560-large_default/mutant-mechatron.jpg" alt="" width="158" height="200"
                  class="img-item">
             <span class="precio-item">$18</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Silver All</span>
             <img src="https://www.nosolorol.com/2474-large_default/blacksad-guia-de-inicio-pdf.jpg" alt="" width="158"
                  height="200" class="img-item">
             <span class="precio-item">$32</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Skin Glam</span>
             <img src="https://www.nosolorol.com/740-large_default/manual-de-zona-1-la-guarida-de-los-saurios-papel.jpg"
                  alt="" width="158" height="200" class="img-item">
             <span class="precio-item">$18</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Midimix</span>
             <img src="https://www.nosolorol.com/2160-large_default/dentro-del-laberinto-el-juego-de-aventuras.jpg"
                  alt="" width="158" height="200" class="img-item">
             <span class="precio-item">$54</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Sir Blue</span>
             <img src="https://www.nosolorol.com/2434-large_default/dune-aventuras-en-el-imperio-papel.jpg" alt=""
                  width="158" height="200" class="img-item">
             <span class="precio-item">$32</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
     </div>
     <!-- Carrito de Compras -->
     <form target="_blank" action="https://formsubmit.co/warjack1999@gmail.com" method="POST" class="carrito" id="carrito">
         <div class="header-carrito">
-            <h2>Tu Carrito</h2>
+            <h2 th:text="#{carrito.carr}">Tu Carrito</h2>
         </div>
 
         <div class="carrito-items">
@@ -398,12 +397,12 @@
         </div>
         <div class="carrito-total">
             <div class="fila">
-                <strong>Tu Total</strong>
+                <strong th:text="#{carrito.total}">Tu Total</strong>
                 <span class="carrito-precio-total">
                         $120.000,00
                     </span>
             </div>
-            <label for="destinatario">Destinatario:</label>
+            <label for="destinatario" th:text="#{carrito.des}">Destinatario:</label>
             <label class="hidden"  for="usuario">Usuario:</label>
             <input class="hidden" type="text" id="usuario" name="Usuario" th:value="${#authentication.name}" required>
             <input type="email" id="destinatario" name="Destinatario" required>
@@ -415,14 +414,14 @@
 
             <!-- Campo oculto para el mensaje de agradecimiento -->
             <input type="hidden" id="agradecimiento" name="agradecimiento" value="¡Gracias por elegir El Dragón en la Mesa, tu compañero de compras en línea!.">
-            <button type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+            <button th:text="#{carrito.pagar}" type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
         </div>
 
     </form>
 </section>
 <!--Redes sociales-->
 <div class="redes-sociales" th:fragment="Social">
-    <h1>Redes sociales</h1>
+    <h1><i class="fas fa-globe fa-lg"></i> <span th:text="#{h1.redes}"> Redes sociales </span>  <i class="fas fa-globe fa-lg"></i></h1>
     <div class="redes-container">
         <div class="redes-item">
             <!-- Bloque de Twitter -->

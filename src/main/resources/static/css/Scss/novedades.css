@@ -8,12 +8,12 @@
   position: relative;
   margin-bottom: 20px;
   z-index: 1;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
 }
 
 .movie-card:nth-child(1) {
-  background-image: url("http://i.imgur.com/VDxMxy9.jpg");
+  background-image: url("https://www.ludonauta.es/files/ludico/juegos-mesas/juego-mesa-the-walking-dead-all-out-war-2016-271758544.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -25,7 +25,7 @@
 }
 
 .movie-card:nth-child(3) {
-  background-image: url("https://i.imgur.com/Zetlod6.jpg");
+  background-image: url("https://www.ludonauta.es/files/ludico/juegos-mesas/juego-mesa-new-eden-2023-2072626746.jpg");
   background-position: center;
   background-size: cover;
 }

@@ -52,23 +52,6 @@ public class InitialDataConfiguration {
         storageService.init();
     }
 
-/*    @PostConstruct
-    public void initUsuarios() {
-        preferenciasService.deleteAll();
-        usuarioPrefeService.deleteAll();
-
-        UsuarioPrefe usuario1 = UsuarioPrefe.builder()
-                .username("user").password(passwordEncoder.encode("user")).role("ROLE_USER").build();
-        Preferencias prefs1 = Preferencias.builder().idioma("en_US").usuarioPrefe(usuario1).build();
-        preferenciasService.save(prefs1);
-        //usuario1 = usuarioService.registrar(usuario1);
-
-        UsuarioPrefe usuario2 = UsuarioPrefe.builder()
-                .username("admin").password(passwordEncoder.encode("admin")).role("ROLE_ADMIN").build();
-        Preferencias prefs2 = Preferencias.builder().idioma("es_ES").usuarioPrefe(usuario2).build();
-        preferenciasService.save(prefs2);
-        //usuario2 = usuarioService.registrar(usuario2);
-    }*/
 
     @PostConstruct
     public void initFaccion() {
@@ -99,18 +82,6 @@ public class InitialDataConfiguration {
         faccionService.saveAll(Arrays.asList(fac1, fac2, fac3, fac4));
 
         log.info("alta usuarios");
-        //UsuarioPrefe usuario1 = UsuarioPrefe.builder()
-//                .username("user").password(passwordEncoder.encode("user")).role("ROLE_USER").build();
-//        Preferencias prefs1 = Preferencias.builder().idioma("en_US").usuarioPrefe(usuario1).build();
-//        preferenciasService.save(prefs1);
-        //usuario1 = usuarioService.registrar(usuario1);
-
-/*
-        UsuarioPrefe usuario2 = UsuarioPrefe.builder()
-                .username("admin").password(passwordEncoder.encode("admin")).role("ROLE_ADMIN").build();
-        Preferencias prefs2 = Preferencias.builder().idioma("es_ES").usuarioPrefe(usuario2).build();
-        preferenciasService.save(prefs2);
-*/
 
         Usuario usr1 = Usuario.builder()
                 .username("admin")
@@ -156,7 +127,7 @@ public class InitialDataConfiguration {
                 .faccion(fac4)
                 .build();
         //Guardamos las preferencias, tienes que guardarlas antes de la lista o casca
-        Preferencias prefs1 = Preferencias.builder().idioma("en_US").usuario(usr1).build();
+        Preferencias prefs1 = Preferencias.builder().idioma("fr_FR").usuario(usr1).build();
         preferenciasService.save(prefs1);
         Preferencias prefs2 = Preferencias.builder().idioma("es_ES").usuario(usr2).build();
         preferenciasService.save(prefs2);
@@ -220,23 +191,73 @@ public class InitialDataConfiguration {
                 .nombre("7 de Mar")
                 .imagen("../img/juegos/naciones-piratas.jpg")
                 .empresa("Primin")
-                .precio("40")
+                .precio("15")
                 .disponible(false)
                 .genero(gen2)
                 .build();
 
-
         Juego jue4 = Juego.builder()
-                .nombre("Zombois")
-                .imagen("../img/juegos/zomboid.jpg")
+                .nombre("zombicideBP")
+                .imagen("../img/juegos/zombicideBP.jpg")
                 .empresa("Vasili")
-                .precio("30")
+                .precio("32")
                 .disponible(true)
                 .genero(gen3)
                 .build();
+        Juego jue5 = Juego.builder()
+                .nombre("Oathsworn")
+                .imagen("../img/juegos/oathsworn.jpg")
+                .empresa("Vasili")
+                .precio("18")
+                .disponible(true)
+                .genero(gen3)
+                .build();
+        Juego jue6 = Juego.builder()
+                .nombre("7 de Mar Corsarios")
+                .imagen("https://www.nosolorol.com/913-large_default/7-mar-pantalla-del-dj-papel.jpg")
+                .empresa("Primin")
+                .precio("25")
+                .disponible(true)
+                .genero(gen2)
+                .build();
+        Juego jue7 = Juego.builder()
+                .nombre("Mars")
+                .imagen("../img/juegos/mars.jpg")
+                .empresa("Primin")
+                .precio("35")
+                .disponible(true)
+                .genero(gen2)
+                .build();
+
+        Juego jue8 = Juego.builder()
+                .nombre("La tripulación")
+                .imagen("../img/juegos/agua.jpg")
+                .empresa("Primin")
+                .precio("18")
+                .disponible(true)
+                .genero(gen2)
+                .build();
+        Juego jue9 = Juego.builder()
+                .nombre("Dune")
+                .imagen("https://www.nosolorol.com/2434-large_default/dune-aventuras-en-el-imperio-papel.jpg")
+                .empresa("Falcon")
+                .precio("32")
+                .disponible(true)
+                .genero(gen4)
+                .build();
+        Juego jue10 = Juego.builder()
+                .nombre("Root")
+                .imagen("../img/juegos/root.jpg")
+                .empresa("Falcon")
+                .precio("54")
+                .disponible(true)
+                .genero(gen1)
+                .build();
 
 
-        juegoService.saveAll(Arrays.asList(jue1, jue2, jue3, jue4));
+
+
+        juegoService.saveAll(Arrays.asList(jue1, jue2, jue3, jue4,jue5,jue6,jue7,jue8,jue9,jue10));
 
 
     }

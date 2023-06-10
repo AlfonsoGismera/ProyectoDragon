@@ -156,62 +156,62 @@
             <img src="https://www.nosolorol.com/911-large_default/7-mar-papel.jpg" alt="" width="158" height="200"
                  class="img-item">
             <span class="precio-item">$15</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">7 de Mar Corsarios </span>
             <img src="https://www.nosolorol.com/913-large_default/7-mar-pantalla-del-dj-papel.jpg" alt="" width="158"
                  height="200" class="img-item">
             <span class="precio-item">$25</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">2024</span>
             <img src="https://www.nosolorol.com/3349-large_default/2084-rebajas-roleras-de-primavera.jpg" width="158"
                  height="200" alt="" class="img-item">
             <span class="precio-item">$35</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">La Night</span>
             <img src="https://www.nosolorol.com/2560-large_default/mutant-mechatron.jpg" alt="" width="158" height="200"
                  class="img-item">
             <span class="precio-item">$18</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Silver All</span>
             <img src="https://www.nosolorol.com/2474-large_default/blacksad-guia-de-inicio-pdf.jpg" alt="" width="158"
                  height="200" class="img-item">
             <span class="precio-item">$32</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Skin Glam</span>
             <img src="https://www.nosolorol.com/740-large_default/manual-de-zona-1-la-guarida-de-los-saurios-papel.jpg"
                  alt="" width="158" height="200" class="img-item">
             <span class="precio-item">$18</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Midimix</span>
             <img src="https://www.nosolorol.com/2160-large_default/dentro-del-laberinto-el-juego-de-aventuras.jpg"
                  alt="" width="158" height="200" class="img-item">
             <span class="precio-item">$54</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
         <div class="item">
             <span class="titulo-item">Sir Blue</span>
             <img src="https://www.nosolorol.com/2434-large_default/dune-aventuras-en-el-imperio-papel.jpg" alt=""
                  width="158" height="200" class="img-item">
             <span class="precio-item">$32</span>
-            <button class="boton-item">Agregar al Carrito</button>
+            <button th:text="#{carrito.agre}" class="boton-item">Agregar al Carrito</button>
         </div>
     </div>
     <!-- Carrito de Compras -->
     <form target="_blank" action="https://formsubmit.co/warjack1999@gmail.com" method="POST" class="carrito" id="carrito">
         <div class="header-carrito">
-            <h2>Tu Carrito</h2>
+            <h2 th:text="#{carrito.carr}">Tu Carrito</h2>
         </div>
 
         <div class="carrito-items">
@@ -219,12 +219,12 @@
         </div>
         <div class="carrito-total">
             <div class="fila">
-                <strong>Tu Total</strong>
+                <strong th:text="#{carrito.total}">Tu Total</strong>
                 <span class="carrito-precio-total">
                         $120.000,00
                     </span>
             </div>
-            <label for="destinatario">Destinatario:</label>
+            <label for="destinatario" th:text="#{carrito.des}">Destinatario:</label>
             <label class="hidden"  for="usuario">Usuario:</label>
             <input class="hidden" type="text" id="usuario" name="Usuario" th:value="${#authentication.name}" required>
             <input type="email" id="destinatario" name="Destinatario" required>
@@ -236,7 +236,7 @@
 
             <!-- Campo oculto para el mensaje de agradecimiento -->
             <input type="hidden" id="agradecimiento" name="agradecimiento" value="¡Gracias por elegir El Dragón en la Mesa, tu compañero de compras en línea!.">
-            <button type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
+            <button  th:text="#{carrito.pagar}" type="submit" class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i></button>
         </div>
 
     </form>
@@ -248,25 +248,22 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h6 th:text="#{footer.sobreNosotros}">Sobre nosotros</h6>
-                <p class="text-justify">Descubre El Dragón en la Mesa, la tienda online
+                <p th:text="#{footer.sobreNosotros2}" class="text-justify">Descubre El Dragón en la Mesa, la tienda online
                     perfecta para los amantes de los juegos de mesa. Nuestro equipo está comprometido en ofrecerte
                     los mejores títulos y las últimas novedades del mundo de los juegos de mesa. Explora nuestro catálogo, elige tus favoritos y sumérgete en la diversión de El Dragón en la Mesa.
                     ¡Únete a nuestra comunidad de discord y vive la experiencia de los juegos de mesa como nunca antes! </p>
             </div>
-
-
             <div class="col-xs-6 col-md-3">
-                <h6 th:text="#{footer.categoria}">Categorías</h6>
+                <h6 th:text="#{footer.categoria}">Paginas amigas</h6>
                 <ul class="footer-links">
-                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Imperio_de_la_Humanidad" target="_blank">El
-                        Imperio</a></li>
-                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Imperio_T%27au" target="_blank">Tau</a></li>
-                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Orkos" target="_blank">Orkos</a></li>
-                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Tir%C3%A1nidos" target="_blank">Tyranidos</a>
-                    </li>
-                    <li><a href="https://warhammer40k.fandom.com/es/wiki/Caos" target="_blank">Caos</a></li>
+                    <li><a href="https://www.verkami.com/discover/projects/by/popularity/category/24-juegos-de-mesa" target="_blank">Verkami</a></li>
+                    <li><a href="https://www.nosolorol.com/es/" target="_blank">No solo Rol</a></li>
+                    <li><a href="https://www.ludonauta.es/" target="_blank">Ludonauta</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCrNmyQ6D_-FnanB8-_Jj_-g" target="_blank">La taberna rolera</a></li>
+                    <li><a href="https://www.youtube.com/@LaMazmorradePacheco" target="_blank">Mazmorra de Pacheco</a></li>
                 </ul>
             </div>
+
 
             <div class="col-xs-6 col-md-3">
                 <h6 th:text="#{footer.link}">Links Rápidos</h6>
@@ -292,6 +289,7 @@
 
                 </p>
             </div>
+
 
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <ul class="social-icons">

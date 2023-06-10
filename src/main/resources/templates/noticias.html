@@ -26,50 +26,50 @@
 <main>
     <section th:replace="fragmentos::CarritoInvi"></section>
     <section id="humanidad" class="container pagina mx-auto mt-3">
-            <h1 class="pb-4 mb-4 text-center "><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
-            <hr class="featurette-divider">
-            <div class="row featurette noticia">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading"> 7 de Mar: <span class="text-warning">Descubre los misterios del pasado en esta aventura de piratas</span></h2>
-                    <p>Sumérgete en una experiencia única con 7 de Mar, el emocionante juego de mesa que te
-                        transporta a través del tiempo. Con mecánicas innovadoras y una narrativa cautivadora,
-                        explorarás eventos históricos y desvelarás secretos ocultos. ¡Prepárate para un viaje épico y desafía
-                        tu destreza estratégica en cada salto temporal! Disponible ahora en nuestra tienda, ¡no te pierdas
-                        esta increíble aventura en <b>7 de Mar</b>!</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
-                         height="300" src="../img/juegos/naciones-piratas.jpg"  alt="">
-                </div>
-                <hr class="featurette-divider mt-1">
+        <h1 class=" mt-2 mb-2"><i class="fa-solid fa-scroll fa-lg"></i> <span th:text="#{h1.noti}"> Noticias </span><i class="fa-solid fa-scroll fa-lg"></i></h1>
+        <hr class="featurette-divider">
+        <div class="row featurette noticia">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Root:<span class="text-warning">Los Subterráneos</span></h2>
+                <p th:text="#{Not.noticias1}">Es una expansión para el juego de mesa "Root" con la que podrás adentrarte aún más en el mundo de "Root"; para ser exactos podrás "profundizar" más aún ya que añade dos nuevas facciones y un nuevo tablero que nos mostrarán el mundo que se esconde unos metros bajo tierra.
+                    Esta expansión incluye Ley de Root actualizada y te permitirá jugar como: El Ducado Subterráneo, convence a tus ministros para que lideren una virtuosa expedición al bosque,
+                    con el objetivo de imponer orden y acabar con el caos reinante en la superficie;
+                    Esta nueva versión del juego tiene el mismo mecanismo cooperativo e innovador de gestión de bazas que el aclamado juego original, ¡pero con algunas sorpresas nuevas y emocionantes!</p>
             </div>
-
-
-            <div class="row featurette noticia">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Vampiro: <span class="text-danger">La Mascarada renace con su edición actualizada</span></h2>
-                    <p>La oscuridad ha regresado y nos trae la edición actualizada de Vampiro La Mascarada. Sumérgete en el intrigante mundo de los vampiros
-                        y descubre el equilibrio entre el poder y la humanidad. Con mecánicas de juego mejoradas y una ambientación cautivadora, esta nueva e
-                        dición te hará vivir experiencias inolvidables. ¡Enfrenta tus miedos y desata tu sed de poder en <b>Vampiro  La Mascarada</b>! Disponible
-                        ahora en nuestra tienda, ¡no te pierdas esta nueva y emocionante versión del juego de rol más famoso!</p></div>
-                <div class="col-md-5 order-md-1">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
-                         height="300"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Kn-vcPF_c060ubbfbp2mCN-EsLdoa98eNQ&usqp=CAU"  alt="vampiro">
-                </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
+                     height="300" src="/img/juegos/root.jpg"  alt="">
             </div>
             <hr class="featurette-divider mt-1">
-            <div class="row featurette noticia">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">Infinity:<span class="text-warning">El Juego de Miniaturas trae la guerra del futuro a tus manos</span></h2>
-                    <p>Prepárate para librar batallas intensas y estratégicas en el futuro lejano con Infinity El Juego de Miniatura. Dirige tus propias fuerzas en enfrentamientos emocionantes y controla el destino de
-                        planetas distantes. Con una amplia gama de facciones y reglas tácticas desafiantes, esta experiencia de juego te mantendrá al borde de tu asiento. ¡Reúne tus tropas y lidera la guerra intergaláctica en <b>Infinity</b>!
-                        Disponible ahora en nuestra tienda, ¡no te pierdas la oportunidad de ser parte de esta emocionante aventura en el espacio!
-                        <b>¡No esperes más y descubre estas emocionantes novedades en nuestra tienda de juegos de mesa! Sumérgete en mundos llenos de misterio, oscuridad y batallas épicas. ¡Ven y elige tu próxima aventura hoy mismo!</b></p>
-                </div>
-                <div class="col-md-5">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500" height="400" src="https://4.bp.blogspot.com/-q9BM1jI0yAI/Wr5o5PJ9EjI/AAAAAAAB3xQ/fYhcu2oZ4ssST9svfEAKZtKDiwpu1fzrACLcBGAs/s1600/DY-aQgjWAAE4GOU.jpg" alt="Infinity">
-                </div>
+        </div>
+
+
+        <div class="row featurette noticia">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">La Tripulación:<span class="text-warning">Misión mar profundo</span>
+                </h2>
+                <p th:text="#{Not.noticias2}">Lo lejos que lleguéis depende completamente de lo bien que trabajéis juntos como equipo. Carta a carta, tu grupo de búsqueda descubrirá los desafíos que se avecinan y forjará un camino hacia Mu.
+                    Esta nueva versión del juego tiene el mismo mecanismo cooperativo e innovador de gestión de bazas que el aclamado juego original, ¡pero con algunas sorpresas nuevas y emocionantes!
+                    En "Terraforming Mars", los jugadores desarrollan el rol de una de esas corporaciones y trabajan juntos en el proceso de terraformación, pero compiten por obtener los puntos de victoria que otorgan no sólo tus contribuciones a la terraformación, también por mejorar la infraestructura humana a través del sistema solar.</p></div>
+            <div class="col-md-5 order-md-1">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
+                     height="300" src="/img/juegos/agua.jpg"  alt="">
             </div>
+        </div>
+        <hr class="featurette-divider mt-1">
+        <div class="row featurette noticia">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Terraforming Mars:<span class="text-success">Marte verde</span></h2>
+                <p th:text="#{Not.noticias3}">En el siglo XXIV, la humanidad empieza a terraformar el planeta Marte. Gigantescas corporaciones, patrocinadas por el gobierno mundial en la Tierra, empiezan enormes proyectos para elevar la
+                    temperatura, los niveles de oxígeno y la cobertura del planeta por océanos hasta que el medio ambiente sea habitable. En "Terraforming Mars", los jugadores desarrollan el rol de una de esas corporaciones y trabajan juntos en el proceso de terraformación, pero compiten por obtener los puntos de victoria que otorgan no sólo tus contribuciones a la terraformación, también por mejorar la infraestructura humana a través del sistema solar.
+                    Éste es el juego de mesa perfecto para las grandes corporaciones que desean dominar y expandirse a lo largo y ancho del planeta rojo.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500" height="400" src="/img/juegos/mars.jpg" alt="">
+            </div>
+        </div>
+
+
         <hr class="featurette-divider mt-1">
         <!-- Botones de navegación -->
         <div class="text-center d-flex justify-content-between">

@@ -33,11 +33,11 @@
     <section th:replace="fragmentos::CarritoInvi"></section>
     <hr>
     <!--Cartas-->
-    <h1><i class="fa-solid fa-heart fa-lg"></i> Novedades <i class="fa-solid fa-heart fa-lg"></i></h1>
+    <h1><i class="fa-solid fa-heart fa-lg"></i> <span th:text="#{h1.nov}"> Novedades </span> <i class="fa-solid fa-heart fa-lg"></i></h1>
     <div class="container mx-auto" th:replace="Frag-Pruebas::Cartas"></div>
 
     <!-- Noticias -->
-    <h1 class=" mt-2 mb-2"><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
+    <h1 class=" mt-2 mb-2"><i class="fa-solid fa-scroll fa-lg"></i> <span th:text="#{h1.noti}"> Noticias </span><i class="fa-solid fa-scroll fa-lg"></i></h1>
 
     <div class="row mb-2 container mx-auto">
         <div class="col-md-6 zoom">
@@ -46,10 +46,10 @@
                     <strong class="d-inline-block mb-2 text-primary">Lore</strong>
                     <h3 class="mb-0">El Emperador</h3>
                     <div class="mb-1 text-muted">Año 30.000</div>
-                    <p class="card-text mb-auto">El emperador de la humanidad proclamo la Gran cruzada en busca de los
+                    <p class="card-text mb-auto" th:text="#{Not.not1}">El emperador de la humanidad proclamo la Gran cruzada en busca de los
                         primarcas y unificar a la humanidad.</p>
 
-                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                    <a href="#" class="stretched-link"  th:text="#{Not.notsaber}">¿Quiere saber más?</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
 
@@ -64,9 +64,9 @@
                     <strong class="d-inline-block mb-2 text-success">Guardia imperial</strong>
                     <h3 class="mb-0">La Guardia te necesita</h3>
                     <div class="mb-1 text-muted">Año 40.000</div>
-                    <p class="mb-auto">La guardia imperial es un martillo del emperador, es la primera contra el hereje y el xeno.</p>
-                    <b>!Unete a la Guardia Imperial!</b>
-                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                    <p class="mb-auto" th:text="#{Not.not2}">La guardia imperial es un martillo del emperador, es la primera contra el hereje y el xeno.</p>
+                    <b th:text="#{Not.not22}">!Unete a la Guardia Imperial!</b>
+                    <a href="#" th:text="#{Not.notsaber}" class="stretched-link">¿Quiere saber más?</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img class="img-fluid img-thumbnail" src="" th:src="@{../img/Imperial-Guard.jpg}" width="180"
@@ -80,10 +80,10 @@
                     <strong class="d-inline-block mb-2 text-primary">Lore</strong>
                     <h3 class="mb-0">Los tyranidos</h3>
                     <div class="mb-1 text-muted">Año ?????</div>
-                    <p class="card-text mb-auto">Son la misma muerte de la galaxia una gran colmena de seres sedientos
+                    <p class="card-text mb-auto" th:text="#{Not.not3}">Son la misma muerte de la galaxia una gran colmena de seres sedientos
                         de biomasa que usaran para aumentar sus números</p>
                     <b>! WAAAGGGGH!</b>
-                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                    <a href="#" class="stretched-link" th:text="#{Not.notsaber}">¿Quiere saber más?</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img class="img-fluid img-thumbnail" src="" th:src="@{../img/tyra.jpg}" width="170" height="200"
@@ -97,10 +97,10 @@
                     <strong class="d-inline-block mb-2 text-start">Orkos</strong>
                     <h3 class="mb-0">El GRANN WAAAGGGGH</h3>
                     <div class="mb-1 text-muted">Año 40.000</div>
-                    <p class="mb-auto">Los chicoz más duroz te ezperan en las mejores batallas, coje tu garrapato y
+                    <p class="mb-auto" th:text="#{Not.not4}">Los chicoz más duroz te ezperan en las mejores batallas, coje tu garrapato y
                         unete a la lucha</p>
                     <b>! WAAAGGGGH!</b>
-                    <a href="#" class="stretched-link">¿Quiere saber más?</a>
+                    <a href="#" class="stretched-link" th:text="#{Not.notsaber}">¿Quiere saber más?</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img class="img-fluid img-thumbnail" src="" th:src="@{../img/Ghazg.jpg}" width="180" height="200"

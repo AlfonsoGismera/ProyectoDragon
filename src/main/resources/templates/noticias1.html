@@ -26,31 +26,19 @@
 <main>
   <section th:replace="fragmentos::CarritoInvi"></section>
   <section id="humanidad1" class="container pagina mx-auto mt-3">
-    <h1 class="pb-4 mb-4 text-center "><i class="fa-solid fa-scroll fa-lg"></i> Noticias <i class="fa-solid fa-scroll fa-lg"></i></h1>
+    <h1 class=" mt-2 mb-2"><i class="fa-solid fa-scroll fa-lg"></i> <span th:text="#{h1.noti}"> Noticias </span><i class="fa-solid fa-scroll fa-lg"></i></h1>
     <hr class="featurette-divider">
     <div class="row featurette noticia">
       <div class="col-md-7">
-        <h2 class="featurette-heading">La humanidad <span class="text-warning">y su historia</span></h2>
-        <p>El Imperio de la Humanidad es el mayor imperio estelar de la galaxia y se extiende desde la
-          Sagrada Terra hasta
-          las inmediaciones de la Franja Este y las distantes Estrellas del Halo. Está compuesto por un
-          millón de mundos
-          e innumerables almas que dirigir, gobernadas por el <b>Dios-Emperador de la Humanidad</b>.
-          Ejércitos enteros de escribas intentan
-          cotejar el número de habitantes del Imperio, pero esta tarea resulta interminable e imposible,
-          ya que en el reino del Emperador pueden hallarse todas las clases de mundos imaginables:
-          húmedas y sofocantes junglas pobladas por salvajes que empuñan garrotes, tundras heladas
-          con gigantescas ciudades cavadas en glaciares, abrasadores mundos desérticos, mundos forja
-          industrializados y contaminados, mundos colmena donde habitan billones de personas apretadas en
-          masivas megaciudades o gigantescos mundos cardenalicios donde los edificios se destinan al <b>Culto
-            Imperial</b>.
-          Esta diversidad de mundos supone también una amplia variedad de culturas y los habitantes
-          humanos suelen variar enormemente de
-          unos a otros en argot, costumbres y apariencia.</p>
+        <h2 class="featurette-heading">Zombicide: <span class="text-danger">Black Plague </span></h2>
+        <p th:text="#{Not.noticias4}">¡Bienvenidos al oscurantismo de la Edad Media! En su delirante búsqueda de conocimientos prohibidos y el poder definitivo, los nigromantes han desatado el apocalipsis sobre
+          el mundo de los vivos. Sus zombis han destruido los ejércitos del rey y ahora campan a sus anchas, sembrando el caos y la muerte por toda la región.
+
+          ¡Desenvaina tu espada, tensa tu ballesta y prepara tus conjuros! Para los pocos valientes que aún resisten, ha llegado la hora de... ¡"Zombicide: Black Plague"!.</p>
       </div>
       <div class="col-md-5">
         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
-             height="300" src="https://wargamegarrison.com/wp-content/uploads/2021/06/astra-militarum.jpg"  alt="">
+             height="300" src="/img/juegos/zombicideBP.jpg"  alt="">
       </div>
       <hr class="featurette-divider mt-1">
     </div>
@@ -58,25 +46,21 @@
 
     <div class="row featurette noticia">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Los marines espaciales <span class="text-warning">los angeles del emperador</span>
+        <h2 class="featurette-heading">Oathsworn:<span class="text-warning">Into the Deepwoodr</span>
         </h2>
-        <p>En el siniestro futuro del 41º Milenio, la Humanidad se encuentra amenazada
-          por todos lados por desórdenes civiles, invasiones alienígenas y odiosos sirvientes
-          de los temibles Dioses del Caos. Únicamente una fuerza puede frenar estas amenazas,
-          los Marines Espaciales. Creados mediante una ciencia ya olvidada y endurecidos por
-          los rigores del deber y el entrenamiento, el destino de los <b>Marines Espaciales</b> es una
-          eternidad de batallas, llevando la justicia del Emperador a todos los rincones de la
-          galaxia, asegurando así la <b>supervivencia de la Humanidad.</b></p></div>
+        <p th:text="#{Not.noticias5}">Oathsworn: Into the Deepwood" es un juego de mesa que se centra en opciones narrativas y ricos encuentros de combate en miniatura. El juego se desarrolla en Deepwood, donde una
+          compañía libre (los juramentados) lucha por la supervivencia de la humanidad contra los horrores antinaturales y el propio Deepwood.
+          A medida que se desarrollan las sesiones, el grupo se sumerge en una profunda campaña en la que obtienen niveles, botines y nuevos aliados para unirse a ellos en su viaje.</p></div>
       <div class="col-md-5 order-md-1">
         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image  mx-auto" width="500"
-             height="300"  src="https://p4.wallpaperbetter.com/wallpaper/439/289/108/ultramarines-warhammer-40-000-space-marines-wallpaper-preview.jpg"  alt="">
+             height="300"  src="/img/juegos/oathsworn.jpg"  alt="">
       </div>
     </div>
     <hr class="featurette-divider mt-1">
     <div class="row featurette noticia">
       <div class="col-md-7">
         <h2 class="featurette-heading">Umbra:<span class="text-warning">La Sombra de Terciopelo</span></h2>
-        <p>Sólo los hombres lobo estúpidos creen que pueden ganar en la guerra contra el Wyrm únicamente en el mundo físico. Algunos usan la Penumbra como atajo, como centro de operaciones o como forma de tender trampas a enemigos espiritualmente conscientes. Otros toman Puentes Lunares a los Reinos
+        <p th:text="#{Not.noticias6}">Sólo los hombres lobo estúpidos creen que pueden ganar en la guerra contra el Wyrm únicamente en el mundo físico. Algunos usan la Penumbra como atajo, como centro de operaciones o como forma de tender trampas a enemigos espiritualmente conscientes. Otros toman Puentes Lunares a los Reinos
           en la Umbra Próxima, en busca de poderosas magias espirituales o una concentración de las fuerzas del Wyrm lista para atacar a Gaia. Algunos cruzan a otros mundos espirituales con la esperanza de encontrar algún saber desconocido que pueda cambiar el curso de los acontecimientos en su favor. Y unos pocos rumorean sobre la existencia de criaturas bendecidas por la propia Gaia, creadas a partir de sí misma para contener la corrupción del Wyrm.</p>
       </div>
       <div class="col-md-5">
