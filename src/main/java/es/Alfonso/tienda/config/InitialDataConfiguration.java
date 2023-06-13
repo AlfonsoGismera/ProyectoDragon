@@ -170,7 +170,7 @@ public class InitialDataConfiguration {
 
         Juego jue1 = Juego.builder()
                 .nombre("Catan")
-                .imagen("../img/juegos/catan.jpg")
+                .imagen("/img/juegos/catan.jpg")
                 .empresa("Malta")
                 .precio("34")
                 .disponible(true)
@@ -180,7 +180,7 @@ public class InitialDataConfiguration {
 
         Juego jue2 = Juego.builder()
                 .nombre("Carcasone")
-                .imagen("../img/juegos/carcasone.jpg")
+                .imagen("/img/juegos/carcasone.jpg")
                 .empresa("Malta")
                 .precio("40")
                 .disponible(false)
@@ -189,7 +189,7 @@ public class InitialDataConfiguration {
 
         Juego jue3 = Juego.builder()
                 .nombre("7 de Mar")
-                .imagen("../img/juegos/naciones-piratas.jpg")
+                .imagen("/img/juegos/naciones-piratas.jpg")
                 .empresa("Primin")
                 .precio("15")
                 .disponible(false)
@@ -198,7 +198,7 @@ public class InitialDataConfiguration {
 
         Juego jue4 = Juego.builder()
                 .nombre("zombicideBP")
-                .imagen("../img/juegos/zombicideBP.jpg")
+                .imagen("/img/juegos/zombicideBP.jpg")
                 .empresa("Vasili")
                 .precio("32")
                 .disponible(true)
@@ -206,7 +206,7 @@ public class InitialDataConfiguration {
                 .build();
         Juego jue5 = Juego.builder()
                 .nombre("Oathsworn")
-                .imagen("../img/juegos/oathsworn.jpg")
+                .imagen("/img/juegos/oathsworn.jpg")
                 .empresa("Vasili")
                 .precio("18")
                 .disponible(true)
@@ -222,7 +222,7 @@ public class InitialDataConfiguration {
                 .build();
         Juego jue7 = Juego.builder()
                 .nombre("Mars")
-                .imagen("../img/juegos/mars.jpg")
+                .imagen("/img/juegos/mars.jpg")
                 .empresa("Primin")
                 .precio("35")
                 .disponible(true)
@@ -231,7 +231,7 @@ public class InitialDataConfiguration {
 
         Juego jue8 = Juego.builder()
                 .nombre("La tripulación")
-                .imagen("../img/juegos/agua.jpg")
+                .imagen("/img/juegos/agua.jpg")
                 .empresa("Primin")
                 .precio("18")
                 .disponible(true)
@@ -247,7 +247,7 @@ public class InitialDataConfiguration {
                 .build();
         Juego jue10 = Juego.builder()
                 .nombre("Root")
-                .imagen("../img/juegos/root.jpg")
+                .imagen("/img/juegos/root.jpg")
                 .empresa("Falcon")
                 .precio("54")
                 .disponible(true)
