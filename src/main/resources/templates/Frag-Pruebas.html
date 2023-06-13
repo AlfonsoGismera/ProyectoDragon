@@ -60,7 +60,7 @@
             </li>
             <li class="nav-item">
                 <a  th:if="${#authentication.name}"  sec:authorize="!hasRole('ADMIN') and !hasRole('USER')" class="nav-link px-2 text-warning" href="#" th:href="@{/usuario/new}">
-                    <span>Registrarse</span></a>
+                    <span th:text="#{header.regis}">Registrarse</span></a>
             </li>
             <li class="nav-item">
                 <a  th:if="${#authentication.name}"  sec:authorize="!hasRole('ADMIN') and !hasRole('USER')" class="nav-link px-2 text-warning" href="#" th:href="@{/login}">
